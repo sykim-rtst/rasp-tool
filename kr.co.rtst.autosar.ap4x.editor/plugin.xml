@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="kr.co.rtst.autosar.ap4x.editor.APFormEditor"
+            contributorClass="kr.co.rtst.autosar.ap4x.editor.provider.APFormEditorActionContributor"
+            default="false"
+            extensions="Identifiable"
+            icon="icons/applications.png"
+            id="kr.co.rtst.autosar.ap4x.editor.AdaptiveAUTOSARForm"
+            name="Adaptive AUTOSAR Form Editor">
+         <contentTypeBinding
+               contentTypeId="org.artop.aal.autosar.autosarXMLFile">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="kr.co.rtst.autosar.ap4x.editor.APEditorPluginStartup">
+      </startup>
+   </extension>
+
+</plugin>

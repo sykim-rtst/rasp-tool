@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="AdaptiveAutosarNature"
+         name="Adaptive AUTOSAR Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="kr.co.rtst.autosar.ap4x.core.nature.AdaptiveAutosarProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.artop.aal.autosar40.autosar40XMLFile"
+            file-extensions="arxml"
+            id="kr.co.rtst.autosar.ap4x.core.contenttype.aaswcFile"
+            name="Adaptive Application SWC Type XML File"
+            priority="high">
+      </content-type>
+   </extension>
+
+</plugin>

@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RTST Adaptive AUTOSAR 4.x CORE
+Bundle-SymbolicName: kr.co.rtst.autosar.ap4x.core;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: kr.co.rtst.autosar.ap4x.core.AP4xCoreActivator
+Bundle-Vendor: RTST
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.artop.aal.autosar445;bundle-version="4.10.0",
+ org.eclipse.sphinx.emf;bundle-version="0.11.0",
+ org.artop.aal.workspace;bundle-version="4.10.0",
+ org.artop.aal.gautosar.services;bundle-version="4.10.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: kr.co.rtst.autosar.ap45.core
+Bundle-ActivationPolicy: lazy
+Export-Package: kr.co.rtst.autosar.ap4x.core,
+ kr.co.rtst.autosar.ap4x.core.model,
+ kr.co.rtst.autosar.ap4x.core.model.desc,
+ kr.co.rtst.autosar.ap4x.core.model.handler,
+ kr.co.rtst.autosar.ap4x.core.model.manager,
+ kr.co.rtst.autosar.ap4x.core.model.observer,
+ kr.co.rtst.autosar.ap4x.core.model.transaction,
+ kr.co.rtst.autosar.ap4x.core.nature,
+ kr.co.rtst.autosar.ap4x.core.util

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="RTST Adaptive AUTOSAR IDE">
+         <property
+               name="aboutImage"
+               value="icons/alt_about.gif"/>
+         <property
+               name="windowImages"
+               value="icons/window_16.gif,icons/window_32.gif"/>
+         <property
+               name="startupProgressRect"
+               value="80,164,390,15"/>
+         <property
+               name="startupForegroundColor"
+               value="000000"/>
+         <property
+               name="startupMessageRect"
+               value="80,189,390,20"/>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini"/>
+         <property
+               name="appName"
+               value="RTST Adaptive AUTOSAR IDE">
+         </property>
+         <!--
+         <property
+               name="aboutText"
+               value="%productBlurb">
+         </property>
+         <property
+               name="introTitle"
+               value="%productIntroTitle">
+         </property>
+         <property
+               name="introBrandingImage"
+               value="product:intro-artop.png">
+         </property>
+         <property
+               name="introBrandingImageText"
+               value="%productIntroBrandingImageText">
+         </property>
+         <property 
+                name="cssTheme" 
+                value="org.eclipse.e4.ui.css.theme.e4_default"> 
+         </property> 
+         <property 
+                name="applicationCSSResources" 
+          		value="platform:/plugin/org.eclipse.platform/images/"> 
+         </property>
+         -->
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="kr.co.rtst.autosar.ap4x.ide.perspective.PerspectiveFactory"
+            icon="icons/perspective.png"
+            id="kr.co.rtst.autosar.ap4x.ide.perspective"
+            name="RTST Adaptive AUTOSAR Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/dec_nature.png"
+            id="kr.co.rtst.autosar.ap4x.core.AdaptiveAutosarNatureImage"
+            natureId="kr.co.rtst.autosar.ap4x.core.AdaptiveAutosarNature">
+      </image>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="RTST Adaptive AUTOSAR"
+            id="kr.co.rtst.autosar.ap4x.ide">
+      </category>
+      <view
+            id="kr.co.rtst.autosar.ap4x.ide.views.AdaptiveAUTOSARNavigator"
+            name="Adaptive AUTOSAR Navigator"
+            icon="icons/navigator_adaptiv_autosar.png"
+            class="kr.co.rtst.autosar.ap4x.ide.views.AdaptiveAUTOSARNavigator"
+            category="kr.co.rtst.autosar.ap4x.ide"
+            inject="true">
+      </view>
+      <view
+            category="kr.co.rtst.autosar.ap4x.ide"
+            class="kr.co.rtst.autosar.ap4x.ide.views.AutosarPackageExportManagerView"
+            icon="icons/navigator_adaptiv_autosar.png"
+            id="kr.co.rtst.autosar.ap4x.ide.views.AutosarPackageExportManager"
+            name="AUTOSAR Package Export Manager"
+            restorable="true">
+      </view>
+   </extension>
+   
+   <extension point="org.eclipse.ui.navigator.viewer">
+    <viewerContentBinding viewerId="kr.co.rtst.autosar.ap4x.ide.views.AdaptiveAUTOSARNavigator">
+      <includes>
+        <contentExtension
+              pattern="org.eclipse.ui.navigator.resourceContent">
+        </contentExtension>
+        <contentExtension
+              pattern="org.eclipse.ui.navigator.resources.filters.*">
+        </contentExtension>
+        <contentExtension
+              pattern="kr.co.rtst.autosar.ap4x.ide.navigator.content.AdaptiveAutosarResource">
+        </contentExtension>
+        <contentExtension
+              pattern="kr.co.rtst.autosar.ap4x.ide.navigator.content.AdaptiveAutosarModel">
+        </contentExtension>
+        <contentExtension
+              pattern="kr.co.rtst.autosar.ap4x.ide.filter.*">
+        </contentExtension>
+        <!--
+        <contentExtension
+              pattern="org.artop.aal.examples.explorer.navigatorContent.autosar">
+        </contentExtension>
+        -->
+      </includes>
+    </viewerContentBinding>
+    <viewerActionBinding
+          viewerId="kr.co.rtst.autosar.ap4x.ide.views.AdaptiveAUTOSARNavigator">
+       <includes>
+          <actionExtension pattern="org.eclipse.ui.navigator.resources.*"/>
+          <!-- <actionExtension pattern="org.eclipse.sphinx.emf.*" /> -->
+          <!-- <actionExtension pattern="org.artop.aal.*.actions.*" /> -->
+          <!-- <actionExtension pattern="org.artop.aal.examples.*" /> -->
+          <actionExtension pattern="kr.co.rtst.autosar.ap4x.ide.action.*"/>
+       </includes>
+    </viewerActionBinding>
+    <!--
+    <dragAssistant
+          class="org.eclipse.ui.navigator.resources.ResourceDragAdapterAssistant"
+          viewerId="kr.co.rtst.autosar.ap4x.ide.views.AdaptiveAUTOSARNavigator">
+    </dragAssistant>
+    -->
+  </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="kr.co.rtst.autosar.ap4x.ide.views.provider.resource.AdaptiveAutosarResourceContentProvider"
+            id="kr.co.rtst.autosar.ap4x.ide.navigator.content.AdaptiveAutosarResource"
+            labelProvider="kr.co.rtst.autosar.ap4x.ide.views.provider.resource.AdaptiveAutosarResourceDecoratingLabelProvider"
+            name="Adaptive Autosar Resource"
+            priority="highest">
+         <triggerPoints>
+            <and>
+               <instanceof
+                     value="org.eclipse.core.resources.IResource">
+               </instanceof>
+               <test
+                     property="org.eclipse.core.resources.projectNature"
+                     value="kr.co.rtst.autosar.ap4x.core.AdaptiveAutosarNature">
+               </test>
+            </and>
+         </triggerPoints>
+      </navigatorContent>
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="kr.co.rtst.autosar.ap4x.ide.views.provider.model.AdaptiveAutosarModelContentProvider"
+            id="kr.co.rtst.autosar.ap4x.ide.navigator.content.AdaptiveAutosarModel"
+            labelProvider="kr.co.rtst.autosar.ap4x.ide.views.provider.model.AdaptiveAutosarModelDecoratingLabelProvider"
+            name="Adaptive Autosar Model"
+            priority="high">
+         <triggerPoints>
+            <or>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IResource">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.core.resources.projectNature"
+                        value="kr.co.rtst.autosar.ap4x.core.AdaptiveAutosarNature">
+                  </test>
+               </and>
+               <instanceof
+                     value="org.eclipse.emf.ecore.EObject">
+               </instanceof>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+               <and>
+                  <instanceof
+                        value="org.eclipse.emf.ecore.EObject">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sphinx.emf.classNameMatches"
+                        value="autosar\d\w\..*">
+                  </test>
+               </and>
+               <and>
+                  <instanceof
+                        value="org.eclipse.emf.edit.provider.IWrapperItemProvider">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sphinx.emf.ownerClassNameMatches"
+                        value="autosar\d\w\..*">
+                  </test>
+               </and>
+            </or>
+         </possibleChildren>
+         <commonSorter
+               class="kr.co.rtst.autosar.ap4x.ide.views.sorter.APElementComparator">
+         </commonSorter>
+      </navigatorContent>
+      <commonFilter
+            activeByDefault="true"
+            class="kr.co.rtst.autosar.ap4x.ide.views.filter.AdaptiveAutosarProjectFilter"
+            id="kr.co.rtst.autosar.ap4x.ide.filter.AdaptiveAutosarProject"
+            name="Adaptive Autosar Project Filter"
+            visibleInUI="false">
+      </commonFilter>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="kr.co.rtst.autosar.ap4x.ide.views.provider.action.APVirtualElementActionProvider"
+            id="kr.co.rtst.autosar.ap4x.ide.action.APVirtualElement">
+         <enablement>
+            <and>
+               <instanceof
+                     value="kr.co.rtst.autosar.ap4x.core.model.IAPVirtualElement">
+               </instanceof>
+            </and>
+         </enablement>
+      </actionProvider>
+      <actionProvider
+            class="kr.co.rtst.autosar.ap4x.ide.views.provider.action.APRealElementActionProvider"
+            id="kr.co.rtst.autosar.ap4x.ide.action.APRealElement">
+         <enablement>
+            <and>
+               <instanceof
+                     value="org.eclipse.emf.ecore.EObject">
+               </instanceof>
+            </and>
+         </enablement>
+      </actionProvider>
+      <commonWizard
+            associatedExtensionId="kr.co.rtst.autosar.ap4x.ide.navigator.content.AdaptiveAutosarResource"
+            type="new"
+            wizardId="kr.co.rtst.autosar.ap4x.ide.adaptive.project">
+         <enablement></enablement>
+      </commonWizard>
+   </extension>
+  
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="kr.co.rtst.autosar.ap4x.ide.wizards.category"
+            name="RTST Adaptive AUTOSAR Wizards">
+      </category>
+      <wizard
+            category="kr.co.rtst.autosar.ap4x.ide.wizards.category"
+            class="kr.co.rtst.autosar.ap4x.ide.wizards.NewAdaptiveAUTOSARProjectWizard"
+            finalPerspective="kr.co.rtst.autosar.ap4x.ide.perspective"
+            hasPages="true"
+            icon="icons/wizard_project.png"
+            id="kr.co.rtst.autosar.ap4x.ide.adaptive.project"
+            name="Adaptive AUTOSAR Project"
+            project="true">
+      </wizard>
+   </extension>
+
+</plugin>
