@@ -39,8 +39,9 @@ import org.eclipse.sphinx.emf.util.WorkspaceEditingDomainUtil;
 import org.eclipse.sphinx.emf.workspace.loading.ModelLoadManager;
 import org.eclipse.sphinx.platform.util.StatusUtil;
 
+import autosar40.autosartoplevelstructure.AUTOSAR;
 import autosar40.autosartoplevelstructure.impl.AUTOSARImpl;
-import gautosar.ggenericstructure.ginfrastructure.GARPackage;
+import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
 import gautosar.ggenericstructure.ginfrastructure.GReferrable;
 import kr.co.rtst.autosar.ap4x.core.AP4xCoreActivator;
@@ -261,22 +262,24 @@ public class CreateNewAdaptiveAutosarProjectJob extends CreateNewAutosarProjectJ
 		
 		org.eclipse.emf.transaction.TransactionalEditingDomain editingDomain = WorkspaceEditingDomainUtil.getEditingDomain(margedFile.getProject(), releaseDescription);
 		EObject margeEObject = EcorePlatformUtil.loadModelRoot(editingDomain, margedFile);
-		System.out.println("MARGE::"+margeEObject);
+	
+		System.out.println("MARGE::"+margeEObject.getClass().getName());
+		
 		
 		System.out.println("기존 패키지 수:"+arPkes.size());
         for (int i = 0; i < arPkes.size(); i++) {
 			System.out.println("기존 패키지["+i+"]"+arPkes.get(i).gGetShortName());
 		}
-        EList<GARPackage> pkes = ((AUTOSARImpl)margeEObject).gGetArPackages();
+        EList<ARPackage> pkes = ((AUTOSAR)margeEObject).getArPackages();
         System.out.println("추가 패키지 수:"+pkes.size());
         for (int i = 0; i < pkes.size(); i++) {
 			System.out.println("추가 패키지["+i+"]"+pkes.get(i).gGetShortName());
 		}
 		arPkes.addAll(collectSelection((AUTOSARImpl)margeEObject));
-		System.out.println("전체 패키지수:"+arPkes.size());
-        for (int i = 0; i < arPkes.size(); i++) {
-			System.out.println("전체 패키지["+i+"]:"+arPkes.get(i).gGetShortName());
-		}
+//		System.out.println("전체 패키지수:"+arPkes.size());
+//        for (int i = 0; i < arPkes.size(); i++) {
+//			System.out.println("전체 패키지["+i+"]:"+arPkes.get(i).gGetShortName());
+//		}
         
 	}
 	

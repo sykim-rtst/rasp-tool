@@ -6,9 +6,9 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMappingSet;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMappingSet;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroupPrototype;
 import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;

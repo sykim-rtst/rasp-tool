@@ -1,6 +1,6 @@
 package kr.co.rtst.autosar.ap4x.ide.action;
 
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCluster;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetClusterConditional;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCommunicationConnector;

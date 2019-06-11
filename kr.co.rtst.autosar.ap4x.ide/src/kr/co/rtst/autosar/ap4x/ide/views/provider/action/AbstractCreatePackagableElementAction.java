@@ -12,7 +12,7 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.sphinx.emf.util.WorkspaceEditingDomainUtil;
 import org.eclipse.ui.IViewPart;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
 import gautosar.ggenericstructure.ginfrastructure.GARPackage;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
 import gautosar.ggenericstructure.ginfrastructure.GPackageableElement;

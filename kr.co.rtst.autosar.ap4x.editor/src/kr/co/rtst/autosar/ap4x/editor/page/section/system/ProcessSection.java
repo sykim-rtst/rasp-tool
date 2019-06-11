@@ -21,15 +21,15 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.AdaptiveApplicationSwComponentType;
-import autosar40.adaptiveplatform.deployment.adaptivemoduleimplementation.BuildTypeEnum;
-import autosar40.adaptiveplatform.deployment.machine.Machine;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
-import autosar40.adaptiveplatform.deployment.process.ExecutionDependency;
-import autosar40.adaptiveplatform.deployment.process.ProcessFactory;
-import autosar40.adaptiveplatform.deployment.process.SchedulingPolicyKindEnum;
-import autosar40.adaptiveplatform.deployment.process.instancerefs.InstancerefsFactory;
-import autosar40.adaptiveplatform.deployment.process.instancerefs.ModeInMachineInstanceRef;
-import autosar40.adaptiveplatform.deployment.process.instancerefs.ModeInProcessInstanceRef;
+import autosar40.adaptiveplatform.executionmanifest.ExecutionDependency;
+import autosar40.adaptiveplatform.executionmanifest.ExecutionmanifestFactory;
+import autosar40.adaptiveplatform.executionmanifest.SchedulingPolicyKindEnum;
+import autosar40.adaptiveplatform.executionmanifest.instancerefs.InstancerefsFactory;
+import autosar40.adaptiveplatform.executionmanifest.instancerefs.ModeInMachineInstanceRef;
+import autosar40.adaptiveplatform.executionmanifest.instancerefs.ModeInProcessInstanceRef;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
+import autosar40.adaptiveplatform.platformmoduledeployment.adaptivemoduleimplementation.BuildTypeEnum;
 import autosar40.commonstructure.modedeclaration.ModeDeclaration;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
@@ -137,9 +137,9 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 						ProcessToMachineMapping input = getCastedInputDetail();
 						if(input != null) {
 							try {
-								input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPriority(Integer.parseInt(textSchedulingPriority.getText()));
+								input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPriority(Integer.parseInt(textSchedulingPriority.getText()));
 							}catch(NumberFormatException e) {
-								input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPriority(0);
+								input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPriority(0);
 							}
 						}
 						return model;
@@ -162,24 +162,24 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 				comboBuildType.select(1);
 			}
 			
-			listExecutionDependency.setInput(input.getProcess().getModeDependentStartupConfigs().get(0).getExecutionDependencies());
+			listExecutionDependency.setInput(input.getProcess().getStateDependentStartupConfigs().get(0).getExecutionDependencies());
 			listExecutionDependency.refresh();
 			
-			listFunctionGroupMode.setInput(input.getProcess().getModeDependentStartupConfigs().get(0).getFunctionGroupModes());
+			listFunctionGroupMode.setInput(input.getProcess().getStateDependentStartupConfigs().get(0).getFunctionGroupStates());
 			listFunctionGroupMode.refresh();
 			
-			listMachineMode.setInput(input.getProcess().getModeDependentStartupConfigs().get(0).getMachineModes());
+			listMachineMode.setInput(input.getProcess().getStateDependentStartupConfigs().get(0).getFunctionGroupStates());
 			listMachineMode.refresh();
 			
-			if(SchedulingPolicyKindEnum.SCHEDULING_POLICY_FIFO.equals(input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPolicy())) {
+			if(SchedulingPolicyKindEnum.SCHEDULING_POLICY_FIFO.equals(input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPolicy())) {
 				comboSchedulingPolicy.select(0);
-			} else if(SchedulingPolicyKindEnum.SCHEDULING_POLICY_ROUND_ROBIN.equals(input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPolicy())) {
+			} else if(SchedulingPolicyKindEnum.SCHEDULING_POLICY_ROUND_ROBIN.equals(input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPolicy())) {
 				comboSchedulingPolicy.select(1);
-			} else if(SchedulingPolicyKindEnum.SCHEDULING_POLICY_OTHER.equals(input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPolicy())) {
+			} else if(SchedulingPolicyKindEnum.SCHEDULING_POLICY_OTHER.equals(input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPolicy())) {
 				comboSchedulingPolicy.select(2);
 			}
 			
-			textSchedulingPriority.setText(input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPriority().toString());
+			textSchedulingPriority.setText(input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().getSchedulingPriority().toString());
 		}
 	}
 	
@@ -217,9 +217,9 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 					@Override
 					public GARObject doProcess(GARObject model) throws Exception {
 						switch(comboSchedulingPolicy.getSelectionIndex()) {
-						case 0:input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPolicy(SchedulingPolicyKindEnum.SCHEDULING_POLICY_FIFO);break;
-						case 1:input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPolicy(SchedulingPolicyKindEnum.SCHEDULING_POLICY_ROUND_ROBIN);break;
-						case 2:input.getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPolicy(SchedulingPolicyKindEnum.SCHEDULING_POLICY_OTHER);break;
+						case 0:input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPolicy(SchedulingPolicyKindEnum.SCHEDULING_POLICY_FIFO);break;
+						case 1:input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPolicy(SchedulingPolicyKindEnum.SCHEDULING_POLICY_ROUND_ROBIN);break;
+						case 2:input.getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().setSchedulingPolicy(SchedulingPolicyKindEnum.SCHEDULING_POLICY_OTHER);break;
 						}
 						return model;
 					}
@@ -273,10 +273,10 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 										ModeInProcessInstanceRef ref = InstancerefsFactory.eINSTANCE.createModeInProcessInstanceRef();
 										ref.setTargetModeDeclaration((ModeDeclaration)garObject);
 										
-										ExecutionDependency ed = ProcessFactory.eINSTANCE.createExecutionDependency();
-										ed.setApplicationMode(ref);
+										ExecutionDependency ed = ExecutionmanifestFactory.eINSTANCE.createExecutionDependency();
+										ed.setProcessState(ref);
 										
-										input.getProcess().getModeDependentStartupConfigs().get(0).getExecutionDependencies().add(ed);
+										input.getProcess().getStateDependentStartupConfigs().get(0).getExecutionDependencies().add(ed);
 									}
 								}
 								return model;
@@ -295,7 +295,7 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 						
 						@Override
 						public GARObject doProcess(GARObject model) throws Exception {
-							input.getProcess().getModeDependentStartupConfigs().get(0).getExecutionDependencies().removeAll(listExecutionDependency.getStructuredSelection().toList());
+							input.getProcess().getStateDependentStartupConfigs().get(0).getExecutionDependencies().removeAll(listExecutionDependency.getStructuredSelection().toList());
 							return model;
 						}
 					});
@@ -318,7 +318,7 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 									if(garObject instanceof ModeDeclaration) {
 										ModeInMachineInstanceRef ref = InstancerefsFactory.eINSTANCE.createModeInMachineInstanceRef();
 										ref.setTargetModeDeclaration((ModeDeclaration)garObject);
-										input.getProcess().getModeDependentStartupConfigs().get(0).getFunctionGroupModes().add(ref);
+										input.getProcess().getStateDependentStartupConfigs().get(0).getFunctionGroupStates().add(ref);
 									}
 								}
 								return model;
@@ -337,7 +337,7 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 						
 						@Override
 						public GARObject doProcess(GARObject model) throws Exception {
-							input.getProcess().getModeDependentStartupConfigs().get(0).getFunctionGroupModes().removeAll(listFunctionGroupMode.getStructuredSelection().toList());
+							input.getProcess().getStateDependentStartupConfigs().get(0).getFunctionGroupStates().removeAll(listFunctionGroupMode.getStructuredSelection().toList());
 							return model;
 						}
 					});
@@ -360,7 +360,7 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 									if(garObject instanceof ModeDeclaration) {
 										ModeInMachineInstanceRef ref = InstancerefsFactory.eINSTANCE.createModeInMachineInstanceRef();
 										ref.setTargetModeDeclaration((ModeDeclaration)garObject);
-										input.getProcess().getModeDependentStartupConfigs().get(0).getMachineModes().add(ref);
+										input.getProcess().getStateDependentStartupConfigs().get(0).getFunctionGroupStates().add(ref);
 									}
 								}
 								return model;
@@ -379,7 +379,7 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 						
 						@Override
 						public GARObject doProcess(GARObject model) throws Exception {
-							input.getProcess().getModeDependentStartupConfigs().get(0).getMachineModes().removeAll(listMachineMode.getStructuredSelection().toList());
+							input.getProcess().getStateDependentStartupConfigs().get(0).getFunctionGroupStates().removeAll(listMachineMode.getStructuredSelection().toList());
 							return model;
 						}
 					});
@@ -444,7 +444,7 @@ public class ProcessSection extends ShortNameContentGUISection implements Select
 //				}else {
 //					return model.getApplicationMode().getTargetModeDeclaration().getShortName();
 //				}
-				return model.getApplicationMode().getTargetModeDeclaration().getShortName();
+				return model.getProcessState().getTargetModeDeclaration().getShortName();
 //				return ((autosar40.adaptiveplatform.deployment.process.Process)(model.eContainer().eContainer())).getShortName()+"."+model.getApplicationMode().getTargetModeDeclaration().getShortName();
 			}
 			return "";

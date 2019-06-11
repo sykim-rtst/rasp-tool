@@ -65,13 +65,13 @@ public class PersistencyDataProvidedComSpecSection extends AbstractContentGUISec
 		if(input != null) {
 			setDataElementText(input);
 			
-			if(input.getRedundancy() != null) {
-				if(input.getRedundancy().equals(PersistencyRedundancyEnum.NONE)) {
-					comboRedundancy.select(0);
-				} else if(input.getRedundancy().equals(PersistencyRedundancyEnum.REDUNDANT)) {
-					comboRedundancy.select(1);
-				}
-			}
+//			if(input.getRedundancy() != null) {
+//				if(input.getRedundancy().equals(PersistencyRedundancyEnum.NONE)) {
+//					comboRedundancy.select(0);
+//				} else if(input.getRedundancy().equals(PersistencyRedundancyEnum.REDUNDANT)) {
+//					comboRedundancy.select(1);
+//				}
+//			}
 		}
 	}
 
@@ -83,10 +83,10 @@ public class PersistencyDataProvidedComSpecSection extends AbstractContentGUISec
 				doTransactionalOperation(new IAPTransactionalOperation() {
 					@Override
 					public GARObject doProcess(GARObject model) throws Exception {
-						switch(comboRedundancy.getSelectionIndex()) {
-						case 0:input.setRedundancy(PersistencyRedundancyEnum.NONE);break;
-						case 1:input.setRedundancy(PersistencyRedundancyEnum.REDUNDANT);break;
-						}
+//						switch(comboRedundancy.getSelectionIndex()) {
+//						case 0:input.setRedundancy(PersistencyRedundancyEnum.NONE);break;
+//						case 1:input.setRedundancy(PersistencyRedundancyEnum.REDUNDANT);break;
+//						}
 						return model;
 					}
 				});

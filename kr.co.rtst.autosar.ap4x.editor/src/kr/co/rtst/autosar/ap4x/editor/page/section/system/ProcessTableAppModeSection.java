@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
 import autosar40.commonstructure.modedeclaration.ModeDeclaration;
 import autosar40.commonstructure.modedeclaration.ModedeclarationFactory;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
@@ -108,7 +108,7 @@ public class ProcessTableAppModeSection extends AbstractContentGUISection implem
 	}
 	
 	private EList<ModeDeclaration> getTableInput() {
-		return getCastedInputDetail().getProcess().getApplicationModeMachine().getType().getModeDeclarations();
+		return getCastedInputDetail().getProcess().getProcessStateMachine().getType().getModeDeclarations();
 	}
 	
 	@Override
@@ -172,10 +172,10 @@ public class ProcessTableAppModeSection extends AbstractContentGUISection implem
 							model.setValue(Long.parseLong((String)value));
 						}else if(TABLE_COLUMN[3].equals(property)) {
 							if( ((Integer)value) == 0 ) {
-								getCastedInputDetail().getProcess().getApplicationModeMachine().getType().setInitialMode(model);
+								getCastedInputDetail().getProcess().getProcessStateMachine().getType().setInitialMode(model);
 							}else {
-								if(model.equals(getCastedInputDetail().getProcess().getApplicationModeMachine().getType().getInitialMode())){
-									getCastedInputDetail().getProcess().getApplicationModeMachine().getType().setInitialMode(null);
+								if(model.equals(getCastedInputDetail().getProcess().getProcessStateMachine().getType().getInitialMode())){
+									getCastedInputDetail().getProcess().getProcessStateMachine().getType().setInitialMode(null);
 								}
 							}
 						}
@@ -200,7 +200,7 @@ public class ProcessTableAppModeSection extends AbstractContentGUISection implem
 				}else if(TABLE_COLUMN[2].equals(property)) {
 					return Long.toString(model.getValue());
 				}else if(TABLE_COLUMN[3].equals(property)) {
-					return model.equals(getCastedInputDetail().getProcess().getApplicationModeMachine().getType().getInitialMode())?0:1;
+					return model.equals(getCastedInputDetail().getProcess().getProcessStateMachine().getType().getInitialMode())?0:1;
 				}
 				return null;
 			}
@@ -248,7 +248,7 @@ public class ProcessTableAppModeSection extends AbstractContentGUISection implem
 						return model.getShortName();
 					}
 				case 2: return String.valueOf(model.getValue());
-				case 3: return model.equals(getCastedInputDetail().getProcess().getApplicationModeMachine().getType().getInitialMode())?APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_TRUE]:APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_FALSE];
+				case 3: return model.equals(getCastedInputDetail().getProcess().getProcessStateMachine().getType().getInitialMode())?APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_TRUE]:APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_FALSE];
 				}
 			}
 			return "";

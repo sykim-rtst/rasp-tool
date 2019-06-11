@@ -6,11 +6,10 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipEventDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipEventGroup;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipFieldDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipMethodDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipEventDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipFieldDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipMethodDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GARPackage;

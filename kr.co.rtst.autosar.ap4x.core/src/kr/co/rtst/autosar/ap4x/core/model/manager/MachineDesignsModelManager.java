@@ -7,7 +7,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
 import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCommunicationConnector;

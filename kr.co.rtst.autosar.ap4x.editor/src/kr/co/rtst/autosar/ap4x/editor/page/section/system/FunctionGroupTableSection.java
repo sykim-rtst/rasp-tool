@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.commonstructure.modedeclaration.ModeDeclaration;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroupPrototype;
 import autosar40.commonstructure.modedeclaration.ModedeclarationFactory;

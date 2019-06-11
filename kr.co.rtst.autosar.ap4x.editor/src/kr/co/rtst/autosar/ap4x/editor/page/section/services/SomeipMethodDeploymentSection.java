@@ -14,9 +14,9 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
 import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterface;
-import autosar40.adaptiveplatform.deployment.serviceinstance.TransportLayerProtocolEnum;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipMethodDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.TransportLayerProtocolEnum;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipMethodDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import autosar40.swcomponent.portinterface.ClientServerOperation;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;

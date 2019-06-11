@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
 import autosar40.genericstructure.generaltemplateclasses.identifiable.Referrable;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;

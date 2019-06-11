@@ -135,18 +135,18 @@ public class InterfacesModelManager extends AbstractAPModelManager {
 					System.out.println(typeDesc.getTypeName()+" 자식요소: " + chindren.size());
 				}
 				break;
-				case TYPE_NAME_APPLICATION_ERROR:{
-					ApplicationError model = (ApplicationError)element;
-					chindren.addAll(model.getErrorContexts());
-					System.out.println(typeDesc.getTypeName()+" 자식요소: " + chindren.size());
-				}
-				break;
+//				case TYPE_NAME_APPLICATION_ERROR:{
+//					ApplicationError model = (ApplicationError)element;
+//					chindren.addAll(model.getErrorContexts());
+//					System.out.println(typeDesc.getTypeName()+" 자식요소: " + chindren.size());
+//				}
+//				break;
 				case TYPE_NAME_SECVICE_INTERFACE:{
 					ServiceInterface model = (ServiceInterface)element;
 					chindren.addAll(model.getEvents());
 					chindren.addAll(model.getFields());
 					chindren.addAll(model.getMethods());
-					chindren.addAll(model.getPossibleErrors());
+//					chindren.addAll(model.getPossibleErrors());
 					System.out.println(typeDesc.getTypeName()+" 자식요소: " + chindren.size());
 				}
 				break;

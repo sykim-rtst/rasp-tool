@@ -18,10 +18,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.securecommunication.SecureComProps;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.adaptiveplatform.serviceinstancemanifest.securecommunication.SecureComProps;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.genericstructure.generaltemplateclasses.identifiable.Referrable;
-import autosar40.system.fibex.fibex4ethernet.ethernettopology.NetworkEndpoint;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;

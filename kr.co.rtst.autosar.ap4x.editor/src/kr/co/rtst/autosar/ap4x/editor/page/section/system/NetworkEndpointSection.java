@@ -9,7 +9,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.NetworkEndpoint;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.manager.MachineDesignsModelManager;

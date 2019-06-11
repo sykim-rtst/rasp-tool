@@ -3,14 +3,14 @@ package kr.co.rtst.autosar.ap4x.ide.action;
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.ApplicationstructureFactory;
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.Executable;
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.RootSwComponentPrototype;
-import autosar40.adaptiveplatform.deployment.machine.Machine;
-import autosar40.adaptiveplatform.deployment.machine.MachineFactory;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMappingSet;
-import autosar40.adaptiveplatform.deployment.process.ModeDependentStartupConfig;
-import autosar40.adaptiveplatform.deployment.process.ProcessFactory;
-import autosar40.adaptiveplatform.deployment.process.StartupConfig;
-import autosar40.adaptiveplatform.deployment.process.StartupConfigSet;
+import autosar40.adaptiveplatform.executionmanifest.ExecutionmanifestFactory;
+import autosar40.adaptiveplatform.executionmanifest.Process;
+import autosar40.adaptiveplatform.executionmanifest.StartupConfigSet;
+import autosar40.adaptiveplatform.executionmanifest.StateDependentStartupConfig;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.machinemanifest.MachinemanifestFactory;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMappingSet;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroup;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroupPrototype;
 import autosar40.commonstructure.modedeclaration.ModedeclarationFactory;
@@ -51,8 +51,8 @@ public class NewProcessAction extends AbstractAPAction{
 		StartupConfigSet startupConfigSet = APModelContainerAccessor.eINSTANCE.getStartupConfigSet(getAPProject());
 		
 		// 필요한 모델 생성
-		ModeDependentStartupConfig mdStartupConfig = ProcessFactory.eINSTANCE.createModeDependentStartupConfig();
-		StartupConfig startupConfig = ProcessFactory.eINSTANCE.createStartupConfig();
+		StateDependentStartupConfig mdStartupConfig = ExecutionmanifestFactory.eINSTANCE.createStateDependentStartupConfig();//.createModeDependentStartupConfig();
+		autosar40.adaptiveplatform.executionmanifest.StartupConfig startupConfig = ExecutionmanifestFactory.eINSTANCE.createStartupConfig();
 		mdStartupConfig.setStartupConfig(startupConfig);
 		
 		ModeDeclarationGroupPrototype mdgp = ModedeclarationFactory.eINSTANCE.createModeDeclarationGroupPrototype();
@@ -65,12 +65,12 @@ public class NewProcessAction extends AbstractAPAction{
 		RootSwComponentPrototype rootSw = ApplicationstructureFactory.eINSTANCE.createRootSwComponentPrototype();
 		exe.setRootSwComponentPrototype(rootSw);
 		
-		autosar40.adaptiveplatform.deployment.process.Process process = ProcessFactory.eINSTANCE.createProcess();
+		Process process = ExecutionmanifestFactory.eINSTANCE.createProcess();
 		process.setExecutable(exe);
-		process.setApplicationModeMachine(mdgp);
-		process.getModeDependentStartupConfigs().add(mdStartupConfig);
+		process.setProcessStateMachine(mdgp);//setApplicationModeMachine(mdgp);
+		process.getStateDependentStartupConfigs().add(mdStartupConfig);
 		
-		ProcessToMachineMapping mapping = MachineFactory.eINSTANCE.createProcessToMachineMapping();
+		ProcessToMachineMapping mapping = MachinemanifestFactory.eINSTANCE.createProcessToMachineMapping();
 		mapping.setMachine(machine);
 		mapping.setProcess(process);
 		

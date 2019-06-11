@@ -6,11 +6,11 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sphinx.emf.util.WorkspaceEditingDomainUtil;
 
 import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterface;
-import autosar40.adaptiveplatform.deployment.machine.EnterExitTimeout;
-import autosar40.adaptiveplatform.deployment.machine.Machine;
-import autosar40.adaptiveplatform.deployment.machine.MachineFactory;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMappingSet;
+import autosar40.adaptiveplatform.machinemanifest.EnterExitTimeout;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.machinemanifest.MachinemanifestFactory;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMappingSet;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroup;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroupPrototype;
 import autosar40.commonstructure.modedeclaration.ModedeclarationFactory;
@@ -177,7 +177,7 @@ public class APModelInitializer {
 				domain.getCommandStack().execute(new RecordingCommand(domain) {
 					@Override
 					protected void doExecute() {
-						machine.getMachineModeMachines().add(mdgp);
+						machine.getFunctionGroups().add(mdgp);
 						root.gGetArPackages().add(systemPackage);
 					}
 				});
@@ -197,7 +197,7 @@ public class APModelInitializer {
 				domain.getCommandStack().execute(new RecordingCommand(domain) {
 					@Override
 					protected void doExecute() {
-						machine.getMachineModeMachines().add(mdgp);
+						machine.getFunctionGroups().add(mdgp);
 						systemPackage.gGetSubPackages().add(modelPackage);
 					}
 				});
@@ -211,7 +211,7 @@ public class APModelInitializer {
 				domain.getCommandStack().execute(new RecordingCommand(domain) {
 					@Override
 					protected void doExecute() {
-						machine.getMachineModeMachines().add(mdgp);
+						machine.getFunctionGroups().add(mdgp);
 						modelPackage.gGetElements().add(mdg);
 					}
 				});
@@ -228,7 +228,7 @@ public class APModelInitializer {
 			domain.getCommandStack().execute(new RecordingCommand(domain) {
 				@Override
 				protected void doExecute() {
-					EnterExitTimeout enterExitTimeout = MachineFactory.eINSTANCE.createEnterExitTimeout();
+					EnterExitTimeout enterExitTimeout = MachinemanifestFactory.eINSTANCE.createEnterExitTimeout();
 					machine.setDefaultApplicationTimeout(enterExitTimeout);
 				}
 			});
@@ -279,7 +279,7 @@ public class APModelInitializer {
 				domain.getCommandStack().execute(new RecordingCommand(domain) {
 					@Override
 					protected void doExecute() {
-						machine.getMachineModeMachines().add(mdgp);
+						machine.getFunctionGroups().add(mdgp);
 						root.gGetArPackages().add(systemPackage);
 					}
 				});
@@ -299,7 +299,7 @@ public class APModelInitializer {
 				domain.getCommandStack().execute(new RecordingCommand(domain) {
 					@Override
 					protected void doExecute() {
-						machine.getMachineModeMachines().add(mdgp);
+						machine.getFunctionGroups().add(mdgp);
 						systemPackage.gGetSubPackages().add(modelPackage);
 					}
 				});
@@ -313,7 +313,7 @@ public class APModelInitializer {
 				domain.getCommandStack().execute(new RecordingCommand(domain) {
 					@Override
 					protected void doExecute() {
-						machine.getMachineModeMachines().add(mdgp);
+						machine.getFunctionGroups().add(mdgp);
 						modelPackage.gGetElements().add(mdg);
 					}
 				});
@@ -325,8 +325,8 @@ public class APModelInitializer {
 	public static void initializeMachine_Process(final IAPProject apProject, final Machine machine) {
 		GARPackage pkg = null;
 		final GAUTOSAR root = ((GAUTOSAR)apProject.getRootObject());
-		ProcessToMachineMappingSet processToMachineMappingSet = MachineFactory.eINSTANCE.createProcessToMachineMappingSet();
-		ProcessToMachineMapping processToMachineMapping = MachineFactory.eINSTANCE.createProcessToMachineMapping();
+		ProcessToMachineMappingSet processToMachineMappingSet = MachinemanifestFactory.eINSTANCE.createProcessToMachineMappingSet();
+		ProcessToMachineMapping processToMachineMapping = MachinemanifestFactory.eINSTANCE.createProcessToMachineMapping();
 //		processToMachineMapping.setShortName(machine.getShortName()+"_"+);
 		
 //		processToMachineMappingSet.getProcessToMachineMappings().get(0).get

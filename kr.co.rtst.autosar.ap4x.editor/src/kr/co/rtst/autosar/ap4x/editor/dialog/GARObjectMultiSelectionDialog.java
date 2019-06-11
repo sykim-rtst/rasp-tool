@@ -3,7 +3,6 @@ package kr.co.rtst.autosar.ap4x.editor.dialog;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -25,7 +24,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
-import autosar40.adaptiveplatform.deployment.process.instancerefs.ModeInProcessInstanceRef;
 import autosar40.genericstructure.generaltemplateclasses.identifiable.Referrable;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.editor.AP4xEditorActivator;

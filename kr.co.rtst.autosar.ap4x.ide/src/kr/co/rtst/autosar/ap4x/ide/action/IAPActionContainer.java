@@ -1,12 +1,15 @@
 package kr.co.rtst.autosar.ap4x.ide.action;
 
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
+//import autosar40.adaptiveplatform.deployment.machine.Machine;
+//import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCommunicationConnector;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;

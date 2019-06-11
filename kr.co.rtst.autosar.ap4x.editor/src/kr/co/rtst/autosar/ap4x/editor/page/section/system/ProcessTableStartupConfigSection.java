@@ -20,12 +20,10 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMappingSet;
-import autosar40.adaptiveplatform.deployment.process.CommandLineOptionKindEnum;
-import autosar40.adaptiveplatform.deployment.process.ProcessFactory;
-import autosar40.adaptiveplatform.deployment.process.StartupOption;
-import autosar40.commonstructure.modedeclaration.ModedeclarationFactory;
+import autosar40.adaptiveplatform.executionmanifest.ExecutionmanifestFactory;
+import autosar40.adaptiveplatform.executionmanifest.CommandLineOptionKindEnum;
+import autosar40.adaptiveplatform.executionmanifest.StartupOption;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.manager.MachineModelManager;
 import kr.co.rtst.autosar.ap4x.core.model.transaction.IAPTransactionalOperation;
@@ -117,7 +115,7 @@ public class ProcessTableStartupConfigSection extends AbstractContentGUISection 
 	}
 	
 	private EList<StartupOption> getTableInput() {
-		return getCastedInputDetail().getProcess().getModeDependentStartupConfigs().get(0).getStartupConfig().getStartupOptions();
+		return getCastedInputDetail().getProcess().getStateDependentStartupConfigs().get(0).getStartupConfig().getStartupOptions();
 	}
 	
 	@Override
@@ -128,7 +126,7 @@ public class ProcessTableStartupConfigSection extends AbstractContentGUISection 
 				doTransactionalOperation(new IAPTransactionalOperation() {
 					@Override
 					public GARObject doProcess(GARObject model) throws Exception {
-						StartupOption option = ProcessFactory.eINSTANCE.createStartupOption();
+						StartupOption option = ExecutionmanifestFactory.eINSTANCE.createStartupOption();
 						getTableInput().add(option);
 						return model;
 					}

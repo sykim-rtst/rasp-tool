@@ -20,10 +20,9 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.deployment.machine.Machine;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.commonstructure.modedeclaration.ModeDeclaration;
 import autosar40.commonstructure.modedeclaration.ModedeclarationFactory;
-import autosar40.system.transformer.EndToEndTransformationComSpecProps;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.handler.APModelInitializer;
 import kr.co.rtst.autosar.ap4x.core.model.manager.MachineModelManager;
@@ -68,10 +67,10 @@ public class MachineTableSection extends AbstractContentGUISection implements Se
 		// TODO Auto-generated method stub
 		Machine input = getCastedInputDetail();
 		if(input != null) {
-			if(input.getMachineModeMachines() == null || input.getMachineModeMachines().isEmpty()) {
+			if(input.getFunctionGroups() == null || input.getFunctionGroups().isEmpty()) {
 				APModelInitializer.initializeMachine_ModeDeclarationGroupPrototype(getAPProject(), input);
 			}
-			tableMachineModeMachine.setInput(input.getMachineModeMachines().get(0).getType().getModeDeclarations());
+			tableMachineModeMachine.setInput(input.getFunctionGroups().get(0).getType().getModeDeclarations());
 			tableMachineModeMachine.refresh();
 		}
 	}
@@ -121,7 +120,7 @@ public class MachineTableSection extends AbstractContentGUISection implements Se
 					@Override
 					public GARObject doProcess(GARObject model) throws Exception {
 						ModeDeclaration md = ModedeclarationFactory.eINSTANCE.createModeDeclaration();
-						input.getMachineModeMachines().get(0).getType().getModeDeclarations().add(md);
+						input.getFunctionGroups().get(0).getType().getModeDeclarations().add(md);
 						return model;
 					}
 				});
@@ -134,7 +133,7 @@ public class MachineTableSection extends AbstractContentGUISection implements Se
 				doTransactionalOperation(new IAPTransactionalOperation() {
 					@Override
 					public GARObject doProcess(GARObject model) throws Exception {
-						input.getMachineModeMachines().get(0).getType().getModeDeclarations().removeAll(tableMachineModeMachine.getStructuredSelection().toList());
+						input.getFunctionGroups().get(0).getType().getModeDeclarations().removeAll(tableMachineModeMachine.getStructuredSelection().toList());
 						return model;
 					}
 				});
@@ -171,10 +170,10 @@ public class MachineTableSection extends AbstractContentGUISection implements Se
 							model.setValue(Long.parseLong((String)value));
 						}else if(TABLE_COLUMN[3].equals(property)) {
 							if( ((Integer)value) == 0 ) {
-								getCastedInputDetail().getMachineModeMachines().get(0).getType().setInitialMode(model);
+								getCastedInputDetail().getFunctionGroups().get(0).getType().setInitialMode(model);
 							}else {
-								if(model.equals(getCastedInputDetail().getMachineModeMachines().get(0).getType().getInitialMode())){
-									getCastedInputDetail().getMachineModeMachines().get(0).getType().setInitialMode(null);
+								if(model.equals(getCastedInputDetail().getFunctionGroups().get(0).getType().getInitialMode())){
+									getCastedInputDetail().getFunctionGroups().get(0).getType().setInitialMode(null);
 								}
 							}
 						}
@@ -192,7 +191,7 @@ public class MachineTableSection extends AbstractContentGUISection implements Se
 				}else if(TABLE_COLUMN[2].equals(property)) {
 					return Long.toString(model.getValue());
 				}else if(TABLE_COLUMN[3].equals(property)) {
-					return model.equals(getCastedInputDetail().getMachineModeMachines().get(0).getType().getInitialMode())?0:1;
+					return model.equals(getCastedInputDetail().getFunctionGroups().get(0).getType().getInitialMode())?0:1;
 				}
 				return null;
 			}
@@ -238,7 +237,7 @@ public class MachineTableSection extends AbstractContentGUISection implements Se
 //				case 0: return "";
 				case 1: return model.getShortName();
 				case 2: return String.valueOf(model.getValue());
-				case 3: return model.equals(getCastedInputDetail().getMachineModeMachines().get(0).getType().getInitialMode())?APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_TRUE]:APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_FALSE];
+				case 3: return model.equals(getCastedInputDetail().getFunctionGroups().get(0).getType().getInitialMode())?APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_TRUE]:APSectionUIFactory.COMBO_BOOLEAN_VALUE[APSectionUIFactory.COMBO_BOOLEAN_VALUE_INDEX_FALSE];
 				}
 			}
 			return "";

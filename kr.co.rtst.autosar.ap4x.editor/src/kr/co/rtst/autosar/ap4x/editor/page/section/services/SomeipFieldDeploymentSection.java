@@ -2,12 +2,9 @@ package kr.co.rtst.autosar.ap4x.editor.page.section.services;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
@@ -15,13 +12,8 @@ import org.eclipse.ui.forms.SectionPart;
 
 import autosar40.adaptiveplatform.applicationdesign.portinterface.Field;
 import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterface;
-import autosar40.adaptiveplatform.deployment.serviceinstance.TransportLayerProtocolEnum;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipEventDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipFieldDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipMethodDeployment;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
-import autosar40.swcomponent.datatype.dataprototypes.VariableDataPrototype;
-import autosar40.swcomponent.portinterface.ClientServerOperation;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipFieldDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;

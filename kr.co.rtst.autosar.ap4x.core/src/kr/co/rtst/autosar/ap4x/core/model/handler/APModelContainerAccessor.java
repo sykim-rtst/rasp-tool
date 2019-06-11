@@ -7,14 +7,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sphinx.emf.util.WorkspaceEditingDomainUtil;
 
-import autosar40.adaptiveplatform.applicationdesign.applicationstructure.ApplicationstructureFactory;
-import autosar40.adaptiveplatform.applicationdesign.applicationstructure.Executable;
-import autosar40.adaptiveplatform.deployment.machine.MachineFactory;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMapping;
-import autosar40.adaptiveplatform.deployment.machine.ProcessToMachineMappingSet;
-import autosar40.adaptiveplatform.deployment.process.ProcessFactory;
-import autosar40.adaptiveplatform.deployment.process.StartupConfig;
-import autosar40.adaptiveplatform.deployment.process.StartupConfigSet;
+import autosar40.adaptiveplatform.machinemanifest.MachinemanifestFactory;
+import autosar40.adaptiveplatform.executionmanifest.ExecutionmanifestFactory;
+import autosar40.adaptiveplatform.executionmanifest.StartupConfigSet;
+import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMappingSet;
 import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCluster;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetClusterConditional;
@@ -46,7 +42,7 @@ public class APModelContainerAccessor {
 			}
 		}
 		if(set == null) {
-			ProcessToMachineMappingSet newSet = MachineFactory.eINSTANCE.createProcessToMachineMappingSet();
+			ProcessToMachineMappingSet newSet = MachinemanifestFactory.eINSTANCE.createProcessToMachineMappingSet();
 			
 			set = newSet;
 			org.eclipse.emf.transaction.TransactionalEditingDomain domain = WorkspaceEditingDomainUtil.getEditingDomain(
@@ -81,7 +77,7 @@ public class APModelContainerAccessor {
 			}
 		}
 		if(set == null) {
-			StartupConfigSet newSet = ProcessFactory.eINSTANCE.createStartupConfigSet();
+			StartupConfigSet newSet = ExecutionmanifestFactory.eINSTANCE.createStartupConfigSet();
 			
 			set = newSet;
 			org.eclipse.emf.transaction.TransactionalEditingDomain domain = WorkspaceEditingDomainUtil.getEditingDomain(

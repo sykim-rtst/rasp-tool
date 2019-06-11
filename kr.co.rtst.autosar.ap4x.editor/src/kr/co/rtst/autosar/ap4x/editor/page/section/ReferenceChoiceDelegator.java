@@ -10,10 +10,10 @@ import org.eclipse.swt.widgets.Shell;
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.AdaptiveApplicationSwComponentType;
 import autosar40.adaptiveplatform.applicationdesign.portinterface.Field;
 import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterface;
-import autosar40.adaptiveplatform.deployment.machine.Machine;
-import autosar40.adaptiveplatform.deployment.machine.ServiceDiscoveryConfiguration;
-import autosar40.adaptiveplatform.deployment.securecommunication.SecureComProps;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.machinemanifest.ServiceDiscoveryConfiguration;
+import autosar40.adaptiveplatform.serviceinstancemanifest.securecommunication.SecureComProps;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
 import autosar40.commonstructure.implementationdatatypes.ImplementationDataType;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroup;
@@ -24,7 +24,6 @@ import autosar40.swcomponent.datatype.dataprototypes.VariableDataPrototype;
 import autosar40.swcomponent.datatype.datatypes.ApplicationDataType;
 import autosar40.swcomponent.datatype.datatypes.AutosarDataType;
 import autosar40.swcomponent.portinterface.ClientServerOperation;
-import autosar40.system.fibex.fibex4ethernet.ethernettopology.NetworkEndpoint;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;
@@ -106,7 +105,7 @@ public class ReferenceChoiceDelegator {
 //		List<ModeDeclaration> modelList = APModelManagerProvider.apINSTANCE.getAllNetworkEndpoint((GAUTOSAR)apProject.getRootObject());
 		
 		List<GARObject> list = new ArrayList<>();
-		for (ModeDeclarationGroupPrototype modeDeclarationGroupPrototype : machine.getMachineModeMachines()) {
+		for (ModeDeclarationGroupPrototype modeDeclarationGroupPrototype : machine.getFunctionGroups()) {
 			list.addAll(modeDeclarationGroupPrototype.getType().getModeDeclarations());
 		}
 		GARObjectMultiSelectionDialog d = new GARObjectMultiSelectionDialog(shell, null, list, "Machine mode");

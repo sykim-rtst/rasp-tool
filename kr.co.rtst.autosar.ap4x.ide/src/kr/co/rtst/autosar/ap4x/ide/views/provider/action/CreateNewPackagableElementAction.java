@@ -2,8 +2,8 @@ package kr.co.rtst.autosar.ap4x.ide.views.provider.action;
 
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.ApplicationstructureFactory;
 import autosar40.adaptiveplatform.applicationdesign.portinterface.PortinterfaceFactory;
-import autosar40.adaptiveplatform.deployment.machine.MachineFactory;
-import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.ServiceinterfacedeploymentFactory;
+import autosar40.adaptiveplatform.machinemanifest.MachinemanifestFactory;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.ServiceinterfacedeploymentFactory;
 import autosar40.adaptiveplatform.systemdesign.SystemdesignFactory;
 import autosar40.commonstructure.implementationdatatypes.ImplementationdatatypesFactory;
 import autosar40.swcomponent.datatype.datatypes.impl.DatatypesFactoryImpl;
@@ -38,7 +38,7 @@ public class CreateNewPackagableElementAction extends AbstractCreatePackagableEl
 		case IAPVirtualElement.VE_NAME_MACHINE_DESIGN:
 			return SystemdesignFactory.eINSTANCE.createMachineDesign();
 		case IAPVirtualElement.VE_NAME_MACHINE:
-			return MachineFactory.eINSTANCE.createMachine();
+			return MachinemanifestFactory.eINSTANCE.createMachine();
 		}
 		return null;
 	}
