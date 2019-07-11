@@ -17,8 +17,8 @@ Autosar Standard를 구현한 Artop 플러그인과 Autosar 모델의 EMF를 제
 - kr.co.rtst.autosar.common.ui: 편집기 플러그인에서 반복적으로 사용하는 UI 컴포넌트 생성해주는 팩토리 클래스 제공.
 
 # 사사
-- (국문) 본 결과물은 2019년도 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 
+- 본 결과물은 2019년도 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 
   (2018-0-00487,지능형 차량서비스를 위한 고신뢰·적응형 전장SW플랫폼 기술 개발)
-- (영문) This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT) 
+- This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT) 
   (No.2018-0-00487, Reliable and adaptive automotive SW platform for intelligent vehicle services)
 
