@@ -5,7 +5,6 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
@@ -13,9 +12,8 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 import autosar40.genericstructure.generaltemplateclasses.arobject.ARObject;
 import kr.co.rtst.autosar.ap4x.core.model.observer.APModelChangeActionHandler;
 import kr.co.rtst.autosar.ap4x.core.model.observer.IAPModelChangeActionObserver;
-import kr.co.rtst.autosar.ap4x.ide.AP4xIDEActivator;
-import kr.co.rtst.autosar.ap4x.ide.externalservice.IARObjectEventListener;
 import kr.co.rtst.autosar.ap4x.ide.externalservice.ARObjectEventNotifier;
+import kr.co.rtst.autosar.ap4x.ide.externalservice.IARObjectEventListener;
 
 
 /**

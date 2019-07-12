@@ -12,6 +12,8 @@ import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterfa
 import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.adaptiveplatform.machinemanifest.ProcessToMachineMapping;
 import autosar40.adaptiveplatform.machinemanifest.ServiceDiscoveryConfiguration;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.RequiredSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
@@ -38,6 +40,8 @@ public class IDEServiceHandler implements IARObjectEventListener {
 			if(inputObject instanceof AdaptiveApplicationSwComponentType ||
 					inputObject instanceof ServiceInterface ||
 					inputObject instanceof SomeipServiceInterfaceDeployment ||
+					inputObject instanceof ProvidedSomeipServiceInstance ||
+					inputObject instanceof RequiredSomeipServiceInstance ||
 					inputObject instanceof MachineDesign ||
 					inputObject instanceof Machine ||
 					inputObject instanceof ImplementationDataType ||

@@ -67,7 +67,10 @@ public class ElementModifyActionWrapper extends Action {
 			}
 			return "Method Deployment";
 		case "Someip Field Deployment": return "Field Deployment";
-			
+		
+		// # Service Instance 
+		
+		
 		
 		// # Machine Design
 		case "Ethernet Communication Connector": return "Communication Connector";

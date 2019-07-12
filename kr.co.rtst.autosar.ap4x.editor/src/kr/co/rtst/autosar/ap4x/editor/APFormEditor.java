@@ -23,6 +23,8 @@ import org.eclipse.ui.ide.IDE;
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.AdaptiveApplicationSwComponentType;
 import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterface;
 import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.RequiredSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
 import autosar40.commonstructure.implementationdatatypes.ImplementationDataType;
@@ -38,6 +40,8 @@ import kr.co.rtst.autosar.ap4x.editor.page.ApplicationDataTypeEditorPage;
 import kr.co.rtst.autosar.ap4x.editor.page.ImplementationDataTypeEditorPage;
 import kr.co.rtst.autosar.ap4x.editor.page.MachineDesignEditorPage;
 import kr.co.rtst.autosar.ap4x.editor.page.MachineEditorPage;
+import kr.co.rtst.autosar.ap4x.editor.page.ProvidedServiceInstanceEditorPage;
+import kr.co.rtst.autosar.ap4x.editor.page.RequiredServiceInstanceEditorPage;
 import kr.co.rtst.autosar.ap4x.editor.page.ServiceInterfaceEditorPage;
 import kr.co.rtst.autosar.ap4x.editor.page.SomeipServiceInterfaceDeploymentEditorPage;
 
@@ -98,6 +102,10 @@ public class APFormEditor extends BasicTransactionalFormEditor implements IAPMod
 				addPage(new MachineDesignEditorPage(this));
 			} else if(input instanceof Machine) {
 				addPage(new MachineEditorPage(this));
+			} else if(input instanceof ProvidedSomeipServiceInstance) {
+				addPage(new ProvidedServiceInstanceEditorPage(this));
+			} else if(input instanceof RequiredSomeipServiceInstance) {
+				addPage(new RequiredServiceInstanceEditorPage(this));
 			}
 		} catch (PartInitException ex) {
 			PlatformLogUtil.logAsError(AP4xEditorActivator.getDefault(), ex);

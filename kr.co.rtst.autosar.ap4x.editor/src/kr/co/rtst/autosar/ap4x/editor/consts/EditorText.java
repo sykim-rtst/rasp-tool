@@ -11,6 +11,8 @@ public interface EditorText {
 	String EDIT_PAGE_TITLE_ADAPTIVE_APPLICATION_SW_COMPONENT_TYPE 	= "Adaptive application SW component type";
 	String EDIT_PAGE_TITLE_SERVICE_INTERFACE 						= "Service Interface";
 	String EDIT_PAGE_TITLE_SERVICE_INTERFACE_DEPLOYMENT				= "Service Interface Deployment";
+	String EDIT_PAGE_TITLE_PROVIDED_SERVICE_INSTANCE				= "Provided Service Instance";
+	String EDIT_PAGE_TITLE_REQUIRED_SERVICE_INSTANCE				= "Required Service Instance";
 	String EDIT_PAGE_TITLE_MACHINE_DESIGN 							= "Machine Design";
 	String EDIT_PAGE_TITLE_MACHINE		 							= "Machine";
 	
@@ -37,6 +39,9 @@ public interface EditorText {
 	String SECTION_DESC_SERVICE_INTERFACE								= "Service interface desc";
 	String SECTION_SERVICE_INTERFACE_ATTR_NAMESPACE						= "Namespace: ";
 
+	// Service Instance
+	String SECTION_SERVICE_INSTANCE_ATTR_INSTANCE_ID					= "Service Instance ID";
+	//string SECTION_SERVICE_INSTANCE_ATTR_
 	// Adaptive application sw component type
 	
 	
