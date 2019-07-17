@@ -13,7 +13,9 @@ import autosar40.adaptiveplatform.applicationdesign.portinterface.ServiceInterfa
 import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.adaptiveplatform.machinemanifest.ServiceDiscoveryConfiguration;
 import autosar40.adaptiveplatform.serviceinstancemanifest.securecommunication.SecureComProps;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.ServiceInterfaceDeployment;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
 import autosar40.commonstructure.implementationdatatypes.ImplementationDataType;
 import autosar40.commonstructure.modedeclaration.ModeDeclarationGroup;
@@ -264,6 +266,22 @@ public class ReferenceChoiceDelegator {
 			}
 		}else {
 			MessageDialog.openError(shell, EditorText.DIALOG_ERROR_TITLE, EditorText.DIALOG_ERROR_MESSAGE_INTERFACE_NOT_FOUND);
+		}
+		return null;
+	}
+	
+	public static ServiceInterfaceDeployment choiceSingleServiceInterfaceDeployment(Shell shell, IAPProject apProject)
+	{
+		List<SomeipServiceInterfaceDeployment> serviceInterfaceDeployments = APModelManagerProvider.apINSTANCE.getInterfaceDeploymentModelManager().getAllSomeipServiceInterfaceDeployment((GAUTOSAR)apProject.getRootObject());
+		List<GARObject> list = new ArrayList<>();
+		list.addAll(serviceInterfaceDeployments);
+		GARObjectSingleSelectionDialog d = new GARObjectSingleSelectionDialog(shell, null, list, "ServiceInterfaceDeployment");
+		if(d.open() == IDialogConstants.OK_ID) {
+			if(d.getSelectedObject() instanceof ServiceInterfaceDeployment) {
+				return (ServiceInterfaceDeployment)d.getSelectedObject();
+			}
+		}else {
+			MessageDialog.openError(shell, EditorText.DIALOG_ERROR_TITLE, EditorText.DIALOG_ERROR_MESSAGE_INTERFACE_DEPLOYMENT_NOT_FOUND);
 		}
 		return null;
 	}
