@@ -75,11 +75,11 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 		textServiceInstanceId = APSectionUIFactory.createLabelText(parent, ToolTipFactory.get(""), "Service instance ID: ", AbstractContentGUISection.CLIENT_CONTENT_COLUMN-1, false);
 		
 		listEventProps = APSectionUIFactory.createLabelListViewer(parent, ToolTipFactory.get(""), "Event props: ", AbstractContentGUISection.CLIENT_CONTENT_COLUMN-1);
-		listEventProps.setContentProvider(new SomeipEventPropsContentProvider());
+		listEventProps.setContentProvider(new ProvidedServiceInstanceContentProvider());
 		listEventProps.setLabelProvider(new SomeipEventPropsLabelProvider());
 		
 		listMethodResponseProps = APSectionUIFactory.createLabelListViewer(parent, ToolTipFactory.get(""), "Method response\r\nprops: ", AbstractContentGUISection.CLIENT_CONTENT_COLUMN-1);
-		listMethodResponseProps.setContentProvider(new SomeipEventPropsContentProvider());
+		listMethodResponseProps.setContentProvider(new ProvidedServiceInstanceContentProvider());
 		listMethodResponseProps.setLabelProvider(new SomeipMethodPropsLabelProvider());
 		
 		//hookTextListener();
@@ -113,7 +113,7 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 	
 	@Override
 	public void widgetSelected(SelectionEvent e) {
-		if(e.getSource().equals(buttonChooseInterface)) {
+		if(e.getSource().equals(buttonChooseInterface)) { //ServiceInterface 선택버튼
 			final ProvidedSomeipServiceInstance input = getCastedInputObject();
 			if(input != null)
 			{
@@ -173,6 +173,25 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 					}
 				}
 			}
+		}else if(e.getSource().equals(buttonEraseInterface)) { //Service insterface 선택 취소 버튼
+			final ProvidedSomeipServiceInstance input = getCastedInputObject();
+			if(input != null)
+			{
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						input.setServiceInterface(null);
+						input.getEventProps().clear();
+						input.getMethodResponseProps().clear();
+						
+						return null;
+					}
+				});
+				textServiceInterface.setText("");
+				listEventProps.refresh();
+				listMethodResponseProps.refresh();
+			}
 		}
 		
 	}
@@ -188,7 +207,7 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 		return (ProvidedSomeipServiceInstance)getAPEditorPage().getAPFormEditor().getEditorInputObject();
 	}
 	
-	private class SomeipEventPropsContentProvider implements IStructuredContentProvider {
+	private class ProvidedServiceInstanceContentProvider implements IStructuredContentProvider {
 
 		@Override
 		public Object[] getElements(Object inputElement) {
