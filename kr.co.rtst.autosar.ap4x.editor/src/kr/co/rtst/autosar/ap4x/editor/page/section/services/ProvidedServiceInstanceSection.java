@@ -7,6 +7,8 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.sphinx.emf.explorer.BasicExplorerLabelProvider;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
@@ -52,8 +54,8 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 	
 	private ListViewer listEventProps;
 	private ListViewer listMethodResponseProps;
-	private Text textLoadBalancingPriority;
-	private Text textLoadBalancingWeight;
+	private Text textLoadBalancingPriority; //optional
+	private Text textLoadBalancingWeight;   //optional 
 	
 	
 	public ProvidedServiceInstanceSection(AbstractAPEditorPage formPage, int style) {
@@ -82,14 +84,37 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 		listMethodResponseProps.setContentProvider(new ProvidedServiceInstanceContentProvider());
 		listMethodResponseProps.setLabelProvider(new SomeipMethodPropsLabelProvider());
 		
-		//hookTextListener();
+		hookTextListener();
 		
 	}
 	
-//	private void hookTextListener()
-//	{
-//		
-//	}
+	private void hookTextListener()
+	{
+		textServiceInstanceId.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						ProvidedSomeipServiceInstance input = getCastedInputObject();
+						if(input != null)
+						{
+							try {
+								input.setServiceInstanceId(Long.parseLong(textServiceInstanceId.getText()));
+							}catch(NumberFormatException e)
+							{
+								input.setServiceInstanceId(0l);
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+	}
 	
 	@Override
 	public void initUIContents() {
@@ -99,14 +124,14 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 		
 		if(input != null) {
 			
+			setServiceInstanceIDText(input);
 			listEventProps.setInput(input.getEventProps());
-			listEventProps.refresh();
-			
 			listMethodResponseProps.setInput(input.getMethodResponseProps());
-			listMethodResponseProps.refresh();
 			
 			if(serviceInterface != null) {
 				textServiceInterface.setText(serviceInterface.gGetShortName());
+				listEventProps.refresh();
+				listMethodResponseProps.refresh();
 			}
 		}
 	}
@@ -205,6 +230,15 @@ public class ProvidedServiceInstanceSection extends ShortNameContentGUISection i
 	private ProvidedSomeipServiceInstance getCastedInputObject()
 	{
 		return (ProvidedSomeipServiceInstance)getAPEditorPage().getAPFormEditor().getEditorInputObject();
+	}
+	
+	private void setServiceInstanceIDText(ProvidedSomeipServiceInstance model)
+	{
+		if(model.getServiceInstanceId() != null) {
+			textServiceInstanceId.setText(model.getServiceInstanceId().toString());
+		}else {
+			textServiceInstanceId.setText("");
+		}
 	}
 	
 	private class ProvidedServiceInstanceContentProvider implements IStructuredContentProvider {
