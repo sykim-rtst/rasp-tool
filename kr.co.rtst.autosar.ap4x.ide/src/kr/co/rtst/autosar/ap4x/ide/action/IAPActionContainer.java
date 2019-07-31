@@ -9,6 +9,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.RequiredSomeipServiceInstance;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdServerServiceInstanceConfig;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 //import autosar40.adaptiveplatform.deployment.machine.Machine;
 //import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
@@ -64,7 +65,7 @@ public interface IAPActionContainer {
 			{
 				ProvidedSomeipServiceInstance owner = (ProvidedSomeipServiceInstance)garObject;
 				try {
-					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewProcessAction("Service Instance Config", owner)));
+					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewServiceInstanceConfig("Service Instance Config", owner)));
 				}catch(NotSupportedAPActionException e) {
 					System.err.println(e.getMessage());
 				}

@@ -130,10 +130,10 @@ public abstract class AbstractAPEditorPage extends GenericContentsTreePage {
 			}
 		});
 
-// yunseo Yang 
-//		if(getAPFormEditorInput().getDetailObject() != null) {
-//			((TreeViewer)contentsTreeSection.getViewer()).setSelection(new StructuredSelection(getAPFormEditorInput().getDetailObject()), true);
-//		}
+
+		if(getAPFormEditorInput().getDetailObject() != null) {
+			((TreeViewer)contentsTreeSection.getViewer()).setSelection(new StructuredSelection(getAPFormEditorInput().getDetailObject()), true);
+		}
 	}
 	
 	public APFormEditor getAPFormEditor() {

@@ -18,7 +18,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 
-import autosar40.adaptiveplatform.applicationdesign.applicationstructure.AdaptiveApplicationSwComponentType;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ServiceinstancedeploymentFactory;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipEventProps;
@@ -28,7 +27,6 @@ import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeploy
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.ServiceMethodDeployment;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipEventDeployment;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipMethodDeployment;
-import autosar40.swcomponent.datatype.units.UnitGroup;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;
