@@ -1,7 +1,5 @@
 package kr.co.rtst.autosar.ap4x.ide.action;
 
-import org.artop.aal.common.datatypes.PositiveIntegerDatatype;
-
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ServiceinstancedeploymentFactory;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdServerServiceInstanceConfig;
@@ -27,8 +25,6 @@ public class NewServiceInstanceConfig extends AbstractAPAction{
 			public GARObject doProcess(GARObject model) throws Exception {
 				ProvidedSomeipServiceInstance serviceInstance = (ProvidedSomeipServiceInstance)ownerObject;
 				SomeipSdServerServiceInstanceConfig serviceInstanceConfig = ServiceinstancedeploymentFactory.eINSTANCE.createSomeipSdServerServiceInstanceConfig();
-				serviceInstanceConfig.setShortName("shortNameTest");
-				serviceInstanceConfig.setServiceOfferTimeToLiveData(new PositiveIntegerDatatype(0l));
 				serviceInstancePkg.gGetElements().add(serviceInstanceConfig);
 				serviceInstance.setSdServerConfig(serviceInstanceConfig);
 				return model;

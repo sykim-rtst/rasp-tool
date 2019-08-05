@@ -85,21 +85,265 @@ public class ServiceInstanceConfigSection extends ShortNameContentGUISection imp
 				
 			}
 		});
+		
+
+		
+		textServiceOfferTimeToLive.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							try {
+								input.setServiceOfferTimeToLiveData(new PositiveIntegerDatatype(textServiceOfferTimeToLive.getText()));
+							}catch(NumberFormatException e)
+							{
+								input.setServiceOfferTimeToLiveData(new PositiveIntegerDatatype(0l));
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+		
+		
+		textInitialDelayMaxValue.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							InitialSdDelayConfig delayConfig = input.getInitialOfferBehavior();
+							try {
+								
+								if(delayConfig != null)
+								{
+									delayConfig.setInitialDelayMaxValue(Double.parseDouble(textInitialDelayMaxValue.getText()));
+								}else
+								{
+									delayConfig = EthernettopologyFactory.eINSTANCE.createInitialSdDelayConfig();
+									delayConfig.setInitialDelayMaxValue(Double.parseDouble(textInitialDelayMaxValue.getText()));
+									input.setInitialOfferBehavior(delayConfig);
+								}
+								
+							}catch(NumberFormatException e)
+							{
+								delayConfig.setInitialDelayMaxValue(0d);
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+		
+		textInitialDelayMinValue.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							InitialSdDelayConfig delayConfig = input.getInitialOfferBehavior();
+							try {
+								
+								if(delayConfig != null)
+								{
+									delayConfig.setInitialDelayMinValue(Double.parseDouble(textInitialDelayMinValue.getText()));
+								}else
+								{
+									delayConfig = EthernettopologyFactory.eINSTANCE.createInitialSdDelayConfig();
+									delayConfig.setInitialDelayMinValue(Double.parseDouble(textInitialDelayMinValue.getText()));
+									input.setInitialOfferBehavior(delayConfig);
+								}
+								
+							}catch(NumberFormatException e)
+							{
+								delayConfig.setInitialDelayMinValue(0d);
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+		
+		textInitialRepetitionsBaseDelay.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							InitialSdDelayConfig delayConfig = input.getInitialOfferBehavior();
+							try {
+								
+								if(delayConfig != null)
+								{
+									delayConfig.setInitialRepetitionsBaseDelay(Double.parseDouble(textInitialRepetitionsBaseDelay.getText()));
+								}else
+								{
+									delayConfig = EthernettopologyFactory.eINSTANCE.createInitialSdDelayConfig();
+									delayConfig.setInitialRepetitionsBaseDelay(Double.parseDouble(textInitialRepetitionsBaseDelay.getText()));
+									input.setInitialOfferBehavior(delayConfig);
+								}
+								
+							}catch(NumberFormatException e)
+							{
+								delayConfig.setInitialRepetitionsBaseDelay(0d);
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+		
+		textInitalRepetitionsMax.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							InitialSdDelayConfig delayConfig = input.getInitialOfferBehavior();
+							try {
+								
+								if(delayConfig != null)
+								{
+									delayConfig.setInitialRepetitionsMaxData(new PositiveIntegerDatatype(textInitalRepetitionsMax.getText()));
+								}else
+								{
+									delayConfig = EthernettopologyFactory.eINSTANCE.createInitialSdDelayConfig();
+									delayConfig.setInitialRepetitionsMaxData(new PositiveIntegerDatatype(textInitalRepetitionsMax.getText()));
+									input.setInitialOfferBehavior(delayConfig);
+								}
+								
+							}catch(NumberFormatException e)
+							{
+								delayConfig.setInitialRepetitionsMaxData(new PositiveIntegerDatatype(0l));
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+		
+		textRequestResponseMaxValue.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							RequestResponseDelay requestResponseDelay = input.getRequestResponseDelay();
+							try {
+								
+								if(requestResponseDelay != null)
+								{
+									requestResponseDelay.setMaxValue(Double.parseDouble(textRequestResponseMaxValue.getText()));
+								}else
+								{
+									requestResponseDelay = EthernettopologyFactory.eINSTANCE.createRequestResponseDelay();
+									requestResponseDelay.setMaxValue(Double.parseDouble(textRequestResponseMaxValue.getText()));
+									input.setRequestResponseDelay(requestResponseDelay);
+								}
+								
+							}catch(NumberFormatException e)
+							{
+								requestResponseDelay.setMaxValue(0d);
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+		
+		textRequestResponseMinValue.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				doTransactionalOperation(new IAPTransactionalOperation() {
+					
+					@Override
+					public GARObject doProcess(GARObject model) throws Exception {
+						SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
+						if(input != null)
+						{
+							RequestResponseDelay requestResponseDelay = input.getRequestResponseDelay();
+							try {
+								
+								if(requestResponseDelay != null)
+								{
+									requestResponseDelay.setMinValue(Double.parseDouble(textRequestResponseMinValue.getText()));
+								}else
+								{
+									requestResponseDelay = EthernettopologyFactory.eINSTANCE.createRequestResponseDelay();
+									requestResponseDelay.setMinValue(Double.parseDouble(textRequestResponseMinValue.getText()));
+									input.setRequestResponseDelay(requestResponseDelay);
+								}
+								
+							}catch(NumberFormatException e)
+							{
+								requestResponseDelay.setMinValue(0d);
+							}
+						}
+						return model;
+					}
+				});
+				
+			}
+		});
+
 
 	}
 	
 	@Override
 	public void initUIContents() {
 		super.initUIContents();
-		//final ProvidedSomeipServiceInstance upperInput = getCastedInputObject();
 		final SomeipSdServerServiceInstanceConfig input = getCastedInputDetail();
 		
 		if(input != null) {
 			
-			//setOfferCyclicDeleayText(input);
-			//setServiceOfferTimeToLiveText(input);
-			//setInitialSdDelayConfigText(input);
-			//setRequestResponseDelayConfigText(input);
+			setOfferCyclicDeleayText(input);
+			setServiceOfferTimeToLiveText(input);
+			setInitialSdDelayConfigText(input);
+			setRequestResponseDelayConfigText(input);
 		}
 	}
 	
@@ -126,47 +370,47 @@ public class ServiceInstanceConfigSection extends ShortNameContentGUISection imp
 		
 	}
 	
-//	private void setOfferCyclicDeleayText(SomeipSdServerServiceInstanceConfig model)
-//	{
-//		if(model.getOfferCyclicDelay() != null) {
-//			textOfferCyclicDelay.setText(model.getOfferCyclicDelay().toString());
-//		}else {
-//			textOfferCyclicDelay.setText("");
-//		}
-//	}
-//	
-//	private void setServiceOfferTimeToLiveText(SomeipSdServerServiceInstanceConfig model)
-//	{
-//		if(model.getServiceOfferTimeToLiveData() != null) {
-//			textServiceOfferTimeToLive.setText(model.getServiceOfferTimeToLiveData().toString());
-//		}else {
-//			textServiceOfferTimeToLive.setText("");
-//		}
-//	}
-//	
-//	private void setInitialSdDelayConfigText(SomeipSdServerServiceInstanceConfig model)
-//	{
-//		if(model.getInitialOfferBehavior() != null) {
-//			textInitialDelayMaxValue.setText(model.getInitialOfferBehavior().getInitialDelayMaxValue().toString());
-//			textInitialDelayMinValue.setText(model.getInitialOfferBehavior().getInitialDelayMinValue().toString());
-//			textInitialRepetitionsBaseDelay.setText(model.getInitialOfferBehavior().getInitialRepetitionsBaseDelay().toString());
-//			textInitalRepetitionsMax.setText(model.getInitialOfferBehavior().getInitialRepetitionsMaxData().toString());
-//		}else {
-//			textInitialDelayMaxValue.setText("");
-//			textInitialDelayMinValue.setText("");
-//			textInitialRepetitionsBaseDelay.setText("");
-//			textInitalRepetitionsMax.setText("");
-//		}
-//	}
-//	
-//	private void setRequestResponseDelayConfigText(SomeipSdServerServiceInstanceConfig model)
-//	{
-//		if(model.getRequestResponseDelay() != null) {
-//			textRequestResponseMaxValue.setText(model.getRequestResponseDelay().getMaxValue().toString());
-//			textRequestResponseMinValue.setText(model.getRequestResponseDelay().getMinValue().toString());
-//		}else {
-//			textRequestResponseMaxValue.setText("");
-//			textRequestResponseMinValue.setText("");
-//		}
-//	}
+	private void setOfferCyclicDeleayText(SomeipSdServerServiceInstanceConfig model)
+	{
+		if(model.getOfferCyclicDelay() != null) {
+			textOfferCyclicDelay.setText(model.getOfferCyclicDelay().toString());
+		}else {
+			textOfferCyclicDelay.setText("");
+		}
+	}
+	
+	private void setServiceOfferTimeToLiveText(SomeipSdServerServiceInstanceConfig model)
+	{
+		if(model.getServiceOfferTimeToLiveData() != null) {
+			textServiceOfferTimeToLive.setText(model.getServiceOfferTimeToLiveData().toString());
+		}else {
+			textServiceOfferTimeToLive.setText("");
+		}
+	}
+	
+	private void setInitialSdDelayConfigText(SomeipSdServerServiceInstanceConfig model)
+	{
+		if(model.getInitialOfferBehavior() != null) {
+			textInitialDelayMaxValue.setText(model.getInitialOfferBehavior().getInitialDelayMaxValue().toString());
+			textInitialDelayMinValue.setText(model.getInitialOfferBehavior().getInitialDelayMinValue().toString());
+			textInitialRepetitionsBaseDelay.setText(model.getInitialOfferBehavior().getInitialRepetitionsBaseDelay().toString());
+			textInitalRepetitionsMax.setText(model.getInitialOfferBehavior().getInitialRepetitionsMaxData().toString());
+		}else {
+			textInitialDelayMaxValue.setText("");
+			textInitialDelayMinValue.setText("");
+			textInitialRepetitionsBaseDelay.setText("");
+			textInitalRepetitionsMax.setText("");
+		}
+	}
+	
+	private void setRequestResponseDelayConfigText(SomeipSdServerServiceInstanceConfig model)
+	{
+		if(model.getRequestResponseDelay() != null) {
+			textRequestResponseMaxValue.setText(model.getRequestResponseDelay().getMaxValue().toString());
+			textRequestResponseMinValue.setText(model.getRequestResponseDelay().getMinValue().toString());
+		}else {
+			textRequestResponseMaxValue.setText("");
+			textRequestResponseMinValue.setText("");
+		}
+	}
 }
