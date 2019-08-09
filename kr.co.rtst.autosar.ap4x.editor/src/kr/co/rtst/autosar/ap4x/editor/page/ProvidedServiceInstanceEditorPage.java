@@ -17,6 +17,7 @@ import kr.co.rtst.autosar.ap4x.editor.APFormEditor;
 import kr.co.rtst.autosar.ap4x.editor.consts.EditorText;
 import kr.co.rtst.autosar.ap4x.editor.page.section.services.ProvidedServiceInstanceSection;
 import kr.co.rtst.autosar.ap4x.editor.page.section.services.ServiceInstanceConfigSection;
+import kr.co.rtst.autosar.ap4x.editor.page.section.services.SomeipProvidedEventGroupSection;
 import kr.co.rtst.autosar.common.ui.util.APUILayoutFactory;
 
 public class ProvidedServiceInstanceEditorPage extends AbstractAPEditorPage{
@@ -46,6 +47,9 @@ public class ProvidedServiceInstanceEditorPage extends AbstractAPEditorPage{
 			case ProvidedServiceInstanceModelManager.TYPE_NAME_SERVICE_INSTANCE_SERVER_CONFIG:
 				createDetailServiceInstanceConfig(control, managedForm);
 				break;
+			case ProvidedServiceInstanceModelManager.TYPE_NAME_EVENT_GROUP:
+				createDetailProvidedEventGroup(control, managedForm);
+				break;
 		}
 		return control;
 	}
@@ -64,6 +68,16 @@ public class ProvidedServiceInstanceEditorPage extends AbstractAPEditorPage{
 		parent.setLayout(APUILayoutFactory.getGridLayoutNoMargin(1, false));
 		
 		ServiceInstanceConfigSection sectionGUI = new ServiceInstanceConfigSection(this, ExpandableComposite.TITLE_BAR | Section.DESCRIPTION);
+		sectionGUI.createContent(managedForm, parent);
+		addSection(sectionGUI);
+		
+		parent.setData(sectionGUI.getSectionTypeName());
+	}
+	
+	private void createDetailProvidedEventGroup(Composite parent, IManagedForm managedForm) {
+		parent.setLayout(APUILayoutFactory.getGridLayoutNoMargin(1, false));
+		
+		SomeipProvidedEventGroupSection sectionGUI = new SomeipProvidedEventGroupSection(this, ExpandableComposite.TITLE_BAR | Section.DESCRIPTION);
 		sectionGUI.createContent(managedForm, parent);
 		addSection(sectionGUI);
 		

@@ -25,7 +25,7 @@ public class ProvidedServiceInstanceModelManager extends AbstractAPModelManager{
 	//#################################################################################################
 	public static final String TYPE_NAME_PROVIDED_SERVICE_INSTANCE = "ProvidedServiceInstance";
 	public static final String TYPE_NAME_SERVICE_INSTANCE_SERVER_CONFIG = "ServiceInstanceConfig";
-	public static final String TYPE_NAME_EVENT_GROUP = "EventGroup";
+	public static final String TYPE_NAME_EVENT_GROUP = "ProvidedEventGroup";
 	
 	public ProvidedServiceInstanceModelManager() {
 		// TODO Auto-generated constructor stub
