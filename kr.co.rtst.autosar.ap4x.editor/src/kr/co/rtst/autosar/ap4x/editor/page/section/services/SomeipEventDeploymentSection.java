@@ -139,6 +139,7 @@ public class SomeipEventDeploymentSection extends ShortNameContentGUISection imp
 				if(eventGroup == null) {
 					// 새로운 그룹을 만들어야 한다.
 					eventGroup = ServiceinterfacedeploymentFactory.eINSTANCE.createSomeipEventGroup();
+					eventGroup.setShortName("Someip Event Group"+textEventGroupId.getText());
 					eventGroup.setEventGroupId(Long.parseLong(textEventGroupId.getText()));
 					eventGroup.getEvents().add(input);
 					

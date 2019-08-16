@@ -14,6 +14,8 @@ import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.adaptiveplatform.machinemanifest.ServiceDiscoveryConfiguration;
 import autosar40.adaptiveplatform.serviceinstancemanifest.securecommunication.SecureComProps;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.ServiceInterfaceDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipEventDeployment;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipEventGroup;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceInterfaceDeployment;
 import autosar40.adaptiveplatform.systemdesign.MachineDesign;
@@ -285,6 +287,23 @@ public class ReferenceChoiceDelegator {
 		}
 		return null;
 	}
+	
+	public static SomeipEventGroup choiceSingleEventGroup(Shell shell, IAPProject apProject, SomeipServiceInterfaceDeployment relatedInterfaceDeployment) {
+		if(relatedInterfaceDeployment != null) {
+			List<GARObject> list = new ArrayList<>();
+			list.addAll(relatedInterfaceDeployment.getEventGroups());
+			GARObjectSingleSelectionDialog d = new GARObjectSingleSelectionDialog(shell, null, list, "EventGroup");
+			if(d.open() == IDialogConstants.OK_ID) {
+				if(d.getSelectedObject() instanceof SomeipEventGroup) {
+					return (SomeipEventGroup)d.getSelectedObject();
+				}
+			}
+		}else {
+			MessageDialog.openError(shell, EditorText.DIALOG_ERROR_TITLE, EditorText.DIALOG_ERROR_MESSAGE_INTERFACE_NOT_FOUND);
+		}
+		return null;
+	}
+	
 	
 	public static PortGroup choiceSinglePortGroup(Shell shell, IAPProject apProject) {
 //		EthernettopologyFactory
