@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.RequiredSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipRequiredEventGroup;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdClientServiceInstanceConfig;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdServerServiceInstanceConfig;
 import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
@@ -55,7 +56,10 @@ public class RequiredServiceInstanceModelManager extends AbstractAPModelManager{
 			switch(typeDesc.getTypeName()) {
 				case TYPE_NAME_REQUIRED_SERVICE_INSTANCE:{
 					RequiredSomeipServiceInstance model = (RequiredSomeipServiceInstance)element;
-					children.add(model.getSdClientConfig());
+					if( model.getSdClientConfig() != null)
+					{
+						children.add(model.getSdClientConfig());
+					}
 					children.addAll(model.getRequiredEventGroups());
 					System.out.println(typeDesc.getTypeName()+" 자식요소: " + children.size());
 				}
@@ -76,8 +80,8 @@ public class RequiredServiceInstanceModelManager extends AbstractAPModelManager{
 	protected List<IAPTypeDescriptor> generateAPTypeDescriptors() {
 		List<IAPTypeDescriptor> apTypeDescriptors = new ArrayList<>();
 		
-		IAPTypeDescriptor TD_TYPE_NAME_REQUIRED_SERVICE_INSTANCE = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_REQUIRED_SERVICE_INSTANCE, RequiredSomeipServiceInstance.class, true, true);
-		IAPTypeDescriptor TD_TYPE_NAME_SERVICE_INSTANCE_SD_CONFIG = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_SERVICE_INSTANCE_CLIENT_CONFIG, SomeipSdServerServiceInstanceConfig.class, true, true);
+		IAPTypeDescriptor TD_TYPE_NAME_REQUIRED_SERVICE_INSTANCE = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP, TYPE_NAME_REQUIRED_SERVICE_INSTANCE, RequiredSomeipServiceInstance.class, true, true);
+		IAPTypeDescriptor TD_TYPE_NAME_SERVICE_INSTANCE_SD_CONFIG = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP, TYPE_NAME_SERVICE_INSTANCE_CLIENT_CONFIG, SomeipSdClientServiceInstanceConfig.class, true, true);
 		IAPTypeDescriptor TD_TYPE_NAME_EVENT_GROUP = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_EVENT_GROUP, SomeipRequiredEventGroup.class, true, true);;
 		
 		apTypeDescriptors.add(TD_TYPE_NAME_REQUIRED_SERVICE_INSTANCE);

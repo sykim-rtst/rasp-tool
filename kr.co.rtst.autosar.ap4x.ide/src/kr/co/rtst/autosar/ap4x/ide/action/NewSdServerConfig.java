@@ -8,16 +8,16 @@ import gautosar.ggenericstructure.ginfrastructure.GARPackage;
 import kr.co.rtst.autosar.ap4x.core.model.handler.ARPackageBuilder;
 import kr.co.rtst.autosar.ap4x.core.model.transaction.IAPTransactionalOperation;
 
-public class NewServiceInstanceConfig extends AbstractAPAction{
+public class NewSdServerConfig extends AbstractAPAction{
 
-	public NewServiceInstanceConfig(String text, GARObject ownerObject) {
+	public NewSdServerConfig(String text, GARObject ownerObject) {
 		super(text, ownerObject);
 	}
 	
 	@Override
 	public void run() {
 
-		GARPackage serviceInstancePkg = ARPackageBuilder.getGARPackege(getAPProject(), ARPackageBuilder.LV1_SERVICE, ARPackageBuilder.LV2_SERVICE_INSTANCE_CONFIG);
+		GARPackage serviceInstancePkg = ARPackageBuilder.getGARPackege(getAPProject(), ARPackageBuilder.LV1_SERVICE, ARPackageBuilder.LV2_SERVICE_INSTANCE_SD_SERVER_CONFIG);
 		
 		doTransactionalOperation(new IAPTransactionalOperation() {
 			
