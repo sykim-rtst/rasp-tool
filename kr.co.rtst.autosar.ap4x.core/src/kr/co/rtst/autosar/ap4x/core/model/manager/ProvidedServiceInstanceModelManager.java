@@ -58,7 +58,10 @@ public class ProvidedServiceInstanceModelManager extends AbstractAPModelManager{
 			switch(typeDesc.getTypeName()) {
 				case TYPE_NAME_PROVIDED_SERVICE_INSTANCE:{
 					ProvidedSomeipServiceInstance model = (ProvidedSomeipServiceInstance)element;
-					children.add(model.getSdServerConfig());
+					if(model.getSdServerConfig() != null)
+					{
+						children.add(model.getSdServerConfig());
+					}
 					children.addAll(model.getProvidedEventGroups());
 					System.out.println(typeDesc.getTypeName()+" 자식요소: " + children.size());
 				}
