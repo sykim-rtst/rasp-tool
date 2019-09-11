@@ -24,7 +24,7 @@ import kr.co.rtst.autosar.ap4x.editor.page.section.AbstractContentGUISection;
 import kr.co.rtst.autosar.ap4x.editor.page.section.ShortNameContentGUISection;
 import kr.co.rtst.autosar.common.ui.util.APSectionUIFactory;
 
-public class ServiceInstanceConfigSection extends ShortNameContentGUISection implements SelectionListener{
+public class SomeipSdServerServiceInstanceConfigSection extends ShortNameContentGUISection implements SelectionListener{
 	
 	private Text textOfferCyclicDelay;				//Optional
 	private Text textServiceOfferTimeToLive;		
@@ -35,8 +35,8 @@ public class ServiceInstanceConfigSection extends ShortNameContentGUISection imp
 	private Text textRequestResponseMaxValue;
 	private Text textRequestResponseMinValue;
 	
-	public ServiceInstanceConfigSection(AbstractAPEditorPage formPage, int style) {
-		super(formPage, style, ProvidedServiceInstanceModelManager.TYPE_NAME_SERVICE_INSTANCE_SERVER_CONFIG);
+	public SomeipSdServerServiceInstanceConfigSection(AbstractAPEditorPage formPage, int style) {
+		super(formPage, style, ProvidedServiceInstanceModelManager.TYPE_NAME_SD_SERVER_SERVICE_INSTANCE_CONFIG);
 		// TODO Auto-generated constructor stub
 	}
 	

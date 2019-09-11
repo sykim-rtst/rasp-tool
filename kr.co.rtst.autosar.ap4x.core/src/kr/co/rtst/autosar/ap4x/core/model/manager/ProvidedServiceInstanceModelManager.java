@@ -24,7 +24,7 @@ public class ProvidedServiceInstanceModelManager extends AbstractAPModelManager{
 	// Provided Service Instance 의 하위에 오는 타입들
 	//#################################################################################################
 	public static final String TYPE_NAME_PROVIDED_SERVICE_INSTANCE = "ProvidedServiceInstance";
-	public static final String TYPE_NAME_SERVICE_INSTANCE_SERVER_CONFIG = "ServiceInstanceConfig";
+	public static final String TYPE_NAME_SD_SERVER_SERVICE_INSTANCE_CONFIG = "SdServerServiceInstanceConfig";
 	public static final String TYPE_NAME_EVENT_GROUP = "ProvidedEventGroup";
 	
 	public ProvidedServiceInstanceModelManager() {
@@ -83,7 +83,7 @@ public class ProvidedServiceInstanceModelManager extends AbstractAPModelManager{
 		List<IAPTypeDescriptor> apTypeDescriptors = new ArrayList<>();
 		
 		IAPTypeDescriptor TD_TYPE_NAME_PROVIDED_SERVICE_INSTANCE = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_PROVIDED_SERVICE_INSTANCE, ProvidedSomeipServiceInstance.class, true, true);
-		IAPTypeDescriptor TD_TYPE_NAME_SERVICE_INSTANCE_CONFIG = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_SERVICE_INSTANCE_SERVER_CONFIG, SomeipSdServerServiceInstanceConfig.class, true, true);
+		IAPTypeDescriptor TD_TYPE_NAME_SERVICE_INSTANCE_CONFIG = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_SD_SERVER_SERVICE_INSTANCE_CONFIG, SomeipSdServerServiceInstanceConfig.class, true, true);
 		IAPTypeDescriptor TD_TYPE_NAME_EVENT_GROUP = new APTypeDescriptor(IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, TYPE_NAME_EVENT_GROUP, SomeipProvidedEventGroup.class, true, true);;
 		
 		apTypeDescriptors.add(TD_TYPE_NAME_PROVIDED_SERVICE_INSTANCE);
