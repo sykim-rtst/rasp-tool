@@ -25,7 +25,7 @@ public class RequiredServiceInstanceModelManager extends AbstractAPModelManager{
 	// Provided Service Instance 의 하위에 오는 타입들
 	//#################################################################################################
 	public static final String TYPE_NAME_REQUIRED_SERVICE_INSTANCE = "RequiredServiceInstance";
-	public static final String TYPE_NAME_SERVICE_INSTANCE_CLIENT_CONFIG = "SdConfig";
+	public static final String TYPE_NAME_SERVICE_INSTANCE_CLIENT_CONFIG = "SdClientServiceInstanceConfig";
 	public static final String TYPE_NAME_EVENT_GROUP = "EventGroup";
 	
 	public RequiredServiceInstanceModelManager() {

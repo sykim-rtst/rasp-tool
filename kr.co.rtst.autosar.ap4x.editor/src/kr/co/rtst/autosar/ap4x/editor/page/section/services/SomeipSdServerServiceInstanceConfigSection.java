@@ -44,8 +44,8 @@ public class SomeipSdServerServiceInstanceConfigSection extends ShortNameContent
 	protected void createSectionClientContentDetail(IManagedForm managedForm, SectionPart sectionPart, Composite parent) {
 		super.createSectionClientContentDetail(managedForm, sectionPart, parent);
 		
-		sectionPart.getSection().setText("Service Instance Config");
-		sectionPart.getSection().setDescription("Someip SD Client Service Instance Config");
+		sectionPart.getSection().setText("Sd Server Service Instance Config");
+		sectionPart.getSection().setDescription("Someip SD Server Service Instance Config");
 		
 		textOfferCyclicDelay = APSectionUIFactory.createLabelText(parent, ToolTipFactory.get(""), "Offer cyclic delay: ", AbstractContentGUISection.CLIENT_CONTENT_COLUMN-1, true);
 		textServiceOfferTimeToLive = APSectionUIFactory.createLabelText(parent, ToolTipFactory.get(""), "Service offer time to live: ", AbstractContentGUISection.CLIENT_CONTENT_COLUMN-1, true);

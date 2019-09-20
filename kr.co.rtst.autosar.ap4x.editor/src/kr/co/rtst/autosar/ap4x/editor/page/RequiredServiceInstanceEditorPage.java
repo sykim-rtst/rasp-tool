@@ -16,6 +16,8 @@ import kr.co.rtst.autosar.ap4x.core.model.manager.RequiredServiceInstanceModelMa
 import kr.co.rtst.autosar.ap4x.editor.APFormEditor;
 import kr.co.rtst.autosar.ap4x.editor.consts.EditorText;
 import kr.co.rtst.autosar.ap4x.editor.page.section.services.RequiredServiceInstanceSection;
+import kr.co.rtst.autosar.ap4x.editor.page.section.services.SomeipRequiredEventGroupSection;
+import kr.co.rtst.autosar.ap4x.editor.page.section.services.SomeipSdClientServiceInstanceConfigSection;
 import kr.co.rtst.autosar.common.ui.util.APUILayoutFactory;
 
 public class RequiredServiceInstanceEditorPage extends AbstractAPEditorPage{
@@ -42,21 +44,12 @@ public class RequiredServiceInstanceEditorPage extends AbstractAPEditorPage{
 		case RequiredServiceInstanceModelManager.TYPE_NAME_REQUIRED_SERVICE_INSTANCE:
 			createDetailRequiredServiceInstance(control, managedForm);
 			break;
-//		case InterfacesModelManager.TYPE_NAME_VARIABLE_DATA_PROTOTYPE:
-//			createDetailVariableDataPrototype(control, managedForm);
-//			break;
-//		case InterfacesModelManager.TYPE_NAME_FIELD:
-//			createDetailField(control, managedForm);
-//			break;
-//		case InterfacesModelManager.TYPE_NAME_CLIENT_SERVER_OPERATION:
-//			createClientServerOperation(control, managedForm);
-//			break;
-//		case InterfacesModelManager.TYPE_NAME_APPLICATION_ERROR:
-//			createDetailApplcationError(control, managedForm);
-//			break;
-//		case InterfacesModelManager.TYPE_NAME_SECVICE_INTERFACE:
-//			createDetailServiceInterface(control, managedForm);
-//			break;
+		case RequiredServiceInstanceModelManager.TYPE_NAME_SERVICE_INSTANCE_CLIENT_CONFIG:
+			createDetailSdClientServiceInstanceConfig(control, managedForm);
+			break;
+		case RequiredServiceInstanceModelManager.TYPE_NAME_EVENT_GROUP:
+			createDetailRequiredEventGroup(control, managedForm);
+			break;
 		}
 		return control;
 	}
@@ -71,4 +64,23 @@ public class RequiredServiceInstanceEditorPage extends AbstractAPEditorPage{
 		parent.setData(sectionGUI.getSectionTypeName());
 	}
 	
+	private void createDetailSdClientServiceInstanceConfig(Composite parent, IManagedForm managedForm) {
+		parent.setLayout(APUILayoutFactory.getGridLayoutNoMargin(1, false));
+		
+		SomeipSdClientServiceInstanceConfigSection sectionGUI = new SomeipSdClientServiceInstanceConfigSection(this, ExpandableComposite.TITLE_BAR | Section.DESCRIPTION);
+		sectionGUI.createContent(managedForm, parent);
+		addSection(sectionGUI);
+		
+		parent.setData(sectionGUI.getSectionTypeName());
+	}
+	
+	private void createDetailRequiredEventGroup(Composite parent, IManagedForm managedForm) {
+		parent.setLayout(APUILayoutFactory.getGridLayoutNoMargin(1, false));
+		
+		SomeipRequiredEventGroupSection sectionGUI = new SomeipRequiredEventGroupSection(this, ExpandableComposite.TITLE_BAR | Section.DESCRIPTION);
+		sectionGUI.createContent(managedForm, parent);
+		addSection(sectionGUI);
+		
+		parent.setData(sectionGUI.getSectionTypeName());
+	}
 }
