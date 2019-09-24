@@ -104,22 +104,24 @@ public class SomeipProvidedEventGroupSection extends ShortNameContentGUISection 
 						{
 							SomeipSdServerEventGroupTimingConfig timingConfig = input.getSdServerEventGroupTimingConfig();
 							
+							if(timingConfig == null)
+							{
+								timingConfig = ServiceinstancedeploymentFactory.eINSTANCE.createSomeipSdServerEventGroupTimingConfig();
+								input.setSdServerEventGroupTimingConfig(timingConfig);
+							}
+							
+							RequestResponseDelay reqResDelay = timingConfig.getRequestResponseDelay();
+							if(reqResDelay == null)
+							{
+								reqResDelay = EthernettopologyFactory.eINSTANCE.createRequestResponseDelay();
+								timingConfig.setRequestResponseDelay(reqResDelay);
+							}
+							
 							try {
-								if(timingConfig != null)
-								{
-									timingConfig.getRequestResponseDelay().setMaxValue(Double.parseDouble(textRequestResponseMaxValue.getText()));
-								}else {
-									RequestResponseDelay reqResDelay = EthernettopologyFactory.eINSTANCE.createRequestResponseDelay();
-									timingConfig = ServiceinstancedeploymentFactory.eINSTANCE.createSomeipSdServerEventGroupTimingConfig();
-									
-									input.setSdServerEventGroupTimingConfig(timingConfig);
-									timingConfig.setRequestResponseDelay(reqResDelay);
-									
-									reqResDelay.setMaxValue(Double.parseDouble(textRequestResponseMaxValue.getText()));
-								}
+								reqResDelay.setMaxValue(Double.parseDouble(textRequestResponseMaxValue.getText()));
 							}catch(NumberFormatException e)
 							{
-								timingConfig.getRequestResponseDelay().setMaxValue(Double.parseDouble(textRequestResponseMaxValue.getText()));
+								reqResDelay.setMaxValue(0d);
 							}
 						}
 						return model;
@@ -142,23 +144,24 @@ public class SomeipProvidedEventGroupSection extends ShortNameContentGUISection 
 						{
 							SomeipSdServerEventGroupTimingConfig timingConfig = input.getSdServerEventGroupTimingConfig();
 							
+							if(timingConfig == null)
+							{
+								timingConfig = ServiceinstancedeploymentFactory.eINSTANCE.createSomeipSdServerEventGroupTimingConfig();
+								input.setSdServerEventGroupTimingConfig(timingConfig);
+							}
+							
+							RequestResponseDelay reqResDelay = timingConfig.getRequestResponseDelay();
+							if(reqResDelay == null)
+							{
+								reqResDelay = EthernettopologyFactory.eINSTANCE.createRequestResponseDelay();
+								timingConfig.setRequestResponseDelay(reqResDelay);
+							}
+							
 							try {
-								if(timingConfig != null)
-								{
-									timingConfig.getRequestResponseDelay().setMinValue(Double.parseDouble(textRequestResponseMinValue.getText()));
-								}else {
-									RequestResponseDelay reqResDelay = EthernettopologyFactory.eINSTANCE.createRequestResponseDelay();
-									timingConfig = ServiceinstancedeploymentFactory.eINSTANCE.createSomeipSdServerEventGroupTimingConfig();
-									
-									input.setSdServerEventGroupTimingConfig(timingConfig);
-									timingConfig.setRequestResponseDelay(reqResDelay);
-									
-									reqResDelay.setMinValue(Double.parseDouble(textRequestResponseMinValue.getText()));
-								
-								}
+								reqResDelay.setMinValue(Double.parseDouble(textRequestResponseMinValue.getText()));
 							}catch(NumberFormatException e)
 							{
-								timingConfig.getRequestResponseDelay().setMinValue(Double.parseDouble(textRequestResponseMinValue.getText()));
+								reqResDelay.setMinValue(0d);
 							}
 						}
 						return model;
