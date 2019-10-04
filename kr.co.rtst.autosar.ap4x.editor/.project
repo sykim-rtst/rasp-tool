@@ -3,6 +3,8 @@
 	<name>kr.co.rtst.autosar.ap4x.editor</name>
 	<comment></comment>
 	<projects>
+		<project>kr.co.rtst.autosar.ap4x.core</project>
+		<project>kr.co.rtst.autosar.ap4x.ide</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

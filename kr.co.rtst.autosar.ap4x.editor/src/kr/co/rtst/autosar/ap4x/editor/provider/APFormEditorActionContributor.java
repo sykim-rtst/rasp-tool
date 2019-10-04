@@ -22,83 +22,35 @@ import org.eclipse.sphinx.emf.editors.forms.BasicTransactionalEditorActionBarCon
 import org.eclipse.sphinx.emf.editors.forms.BasicTransactionalFormEditor;
 import org.eclipse.sphinx.platform.ui.util.SelectionUtil;
 
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdServerServiceInstanceConfig;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.impl.SomeipRequiredEventGroupImpl;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
+import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCommunicationConnector;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.APProjectManager;
+import kr.co.rtst.autosar.ap4x.core.model.IAPProject;
 import kr.co.rtst.autosar.ap4x.core.model.manager.APModelManagerProvider;
 import kr.co.rtst.autosar.ap4x.core.model.manager.IAPModelManager;
 import kr.co.rtst.autosar.ap4x.editor.APFormEditor;
 import kr.co.rtst.autosar.ap4x.ide.action.ElementModifyActionWrapper;
 import kr.co.rtst.autosar.ap4x.ide.action.IAPActionContainer;
+import kr.co.rtst.autosar.ap4x.ide.action.NewNetworkEndpointAction;
 import kr.co.rtst.autosar.ap4x.ide.action.NotSupportedAPActionException;
 
 public class APFormEditorActionContributor extends BasicTransactionalEditorActionBarContributor  /*EditingDomainActionBarContributor*/ implements IAPActionContainer {
 	
 	private IStructuredSelection structuredSelection;
 	
-//	@Override
-//	public void contributeToMenu(IMenuManager menuManager) {
-//		// TODO Auto-generated method stub
-////		super.contributeToMenu(menuManager);
-//		System.out.println("===============contributeToMenu 개수:"+menuManager.getItems().length);
-//		for (IContributionItem i : menuManager.getItems()) {
-//			System.out.println(":::"+i);
-//		}
-////		menuAboutToShow(menuManager);
-//		System.out.println("===============contributeToMenu 종료");
-//	}
-//	
-//	@Override
-//	protected void addGlobalActions(IMenuManager menuManager) {
-//		// TODO Auto-generated method stub
-//		System.out.println("===============addGlobalActions 개수1:"+menuManager.getItems().length);
-//		super.addGlobalActions(menuManager);
-//		System.out.println("===============addGlobalActions 개수2:"+menuManager.getItems().length);
-//	}
-//	
-//	@Override
-//	public void activate() {
-//		// TODO Auto-generated method stub
-//		super.activate();
-//	}
-//	
-//	@Override
-//	public void init(IActionBars actionBars) {
-//		// TODO Auto-generated method stub
-//		super.init(actionBars);
-//	}
-	
 	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
-//		super.menuAboutToShow(menuManager);
-//		menuAboutToShow(menuManager);
-//        MenuManager submenuManager = null;
-//        submenuManager = new MenuManager(getStringFromKey("_UI_CreateChild_menu_item"));
-		
-//		final IAPActionObserver actionObserver = new IAPActionObserver() {
-//			
-//			@Override
-//			public void preAction() {
-//				
-//			}
-//			
-//			@Override
-//			public void postAction() {
-//				AdaptiveAUTOSARNavigator.refresh();
-//				APFormEditor.refresh(getActiveEditor().getEditorInput());
-//			}
-//		};
-		
-//		System.out.println("::::createChildSubmenuActions:::"+createChildSubmenuActions.getClass());
 		Map<String, Collection<IAction>> newCreateChildSubmenuActions = new LinkedHashMap<>();
 		Collection<IAction> wrappingList = null;
 		Iterator<Map.Entry<String, Collection<IAction>>> entrise = createChildSubmenuActions.entrySet().iterator();
 		while(entrise.hasNext()) {
 			Map.Entry<String, Collection<IAction>> entry = entrise.next();
 			Collection<IAction> actrions = entry.getValue();
-//			System.out.println("::::actrions:::"+actrions.getClass());
 			wrappingList = new ArrayList<>();
 			for (IAction iAction : actrions) {
-//				System.out.println("---------------EDITOR::reateChildSubmenuActions>>iActoin-TEXT:"+iAction.getText()+", ID:"+iAction.getId());
 				try {
 					wrappingList.add(new ElementModifyActionWrapper(
 							APProjectManager.getInstance().getAPProject((GARObject)((APFormEditor)getActiveEditor()).getEditorInputObject()), 
@@ -112,12 +64,6 @@ public class APFormEditorActionContributor extends BasicTransactionalEditorActio
 		
 		
         populateManager(menuManager, newCreateChildSubmenuActions/*createChildSubmenuActions*/, null);
-//        populateManager(menuManager, createChildActions, null);
-//        menuManager.insertBefore("edit", submenuManager);
-//        submenuManager = new MenuManager(getStringFromKey("_UI_CreateSibling_menu_item"));
-//        populateManager(submenuManager, createSiblingSubmenuActions, null);
-//        populateManager(submenuManager, createSiblingActions, null);
-//        menuManager.insertBefore("edit", submenuManager);
         
         populateAPActions(
         		APProjectManager.getInstance().getAPProject((GARObject)((APFormEditor)getActiveEditor()).getEditorInputObject()), 
@@ -125,9 +71,12 @@ public class APFormEditorActionContributor extends BasicTransactionalEditorActio
         
         menuManager.add(new Separator());
         try {
-			menuManager.add(new ElementModifyActionWrapper(
-					APProjectManager.getInstance().getAPProject((GARObject)((APFormEditor)getActiveEditor()).getEditorInputObject()), 
-					null, deleteAction));
+        	if(!addAPDeleteAction(APProjectManager.getInstance().getAPProject((GARObject)((APFormEditor)getActiveEditor()).getEditorInputObject()), menuManager, (GARObject)((APFormEditor)getActiveEditor()).getEditorInputObject(), structuredSelection))
+        	{
+	 			menuManager.add(new ElementModifyActionWrapper(
+						APProjectManager.getInstance().getAPProject((GARObject)((APFormEditor)getActiveEditor()).getEditorInputObject()), 
+						null, deleteAction));
+        	}
 		} catch (NotSupportedAPActionException e) {
 			System.err.println(e.getMessage());
 		}

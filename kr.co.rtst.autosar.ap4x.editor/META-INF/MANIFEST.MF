@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.ui,
  kr.co.rtst.autosar.ap4x.ide;bundle-version="0.1.0",
  org.eclipse.sphinx.emf.explorer;bundle-version="0.11.0",
  org.artop.aal.autosar447;bundle-version="4.12.0",
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.artop.aal.gautosar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: kr.co.rtst.autosar.ap45.editor
 Bundle-ActivationPolicy: lazy
