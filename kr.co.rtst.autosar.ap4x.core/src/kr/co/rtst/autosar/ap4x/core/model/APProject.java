@@ -23,7 +23,7 @@ public class APProject implements IAPProject{
 		types = new APTopVitualElement(this, IAPVirtualElement.VE_NAME_TYPE, 0, "icons/types/types.png");
 		applications = new APTopVitualElement(this, IAPVirtualElement.VE_NAME_APPLICATION, 1, "icons/applications/applications.png");
 		services = new APTopVitualElement(this, IAPVirtualElement.VE_NAME_SERVICE, 2, "icons/services/services.png");
-		machines = new APTopVitualElement(this, IAPVirtualElement.VE_NAME_SYSTEM, 3, "icons/system/machines.png");
+		machines = new APTopVitualElement(this, IAPVirtualElement.VE_NAME_SYSTEM, 4, "icons/system/machines.png");
 		
 		topVirtualElements = new IAPVirtualElement[4];
 		topVirtualElements[0] = types;
@@ -34,25 +34,29 @@ public class APProject implements IAPProject{
 		IAPVirtualElement[] children = null;
 		
 		children = new IAPVirtualElement[2];
-		children[0] = new APSubVirtualElement(types, IAPVirtualElement.VE_NAME_TYPE_IMPL, 0, "icons/types/implementation.png");
-		children[1] = new APSubVirtualElement(types, IAPVirtualElement.VE_NAME_TYPE_APP, 1, "icons/types/application.png");
+		children[0] = new APSubVirtualElement(types, IAPVirtualElement.VE_NAME_TYPE_IMPL, 0, 1,"icons/types/implementation.png");
+		children[1] = new APSubVirtualElement(types, IAPVirtualElement.VE_NAME_TYPE_APP, 1, 1, "icons/types/application.png");
 		types.setChildren(children);
 		
 		children = new IAPVirtualElement[2];
-		children[0] = new APSubVirtualElement(applications, IAPVirtualElement.VE_NAME_APPLICATION_SWC, 0, "icons/applications/swc.png");
-		children[1] = new APSubVirtualElement(applications, IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM, 1, "icons/applications/platform.png");
+		children[0] = new APSubVirtualElement(applications, IAPVirtualElement.VE_NAME_APPLICATION_SWC, 0, 1, "icons/applications/swc.png");
+		children[1] = new APSubVirtualElement(applications, IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM, 1, 1,  "icons/applications/platform.png");
 		applications.setChildren(children);
 		
-		children = new IAPVirtualElement[4];
-		children[0] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INTERFACE, 0, "icons/services/interface.png");
-		children[1] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT, 1, "icons/services/deployment.png");
-		children[2] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, 2, "icons/services/deployment.png");
-		children[3] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP, 3, "icons/services/deployment.png");
+		children = new IAPVirtualElement[3];
+		children[0] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INTERFACE, 0, 1, "icons/services/interface.png");
+		children[1] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT, 1, 1, "icons/services/deployment.png");
+		children[2] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INSTANCE, 2, 1, "icons/services/deployment.png");
 		services.setChildren(children);
 		
 		children = new IAPVirtualElement[2];
-		children[0] = new APSubVirtualElement(machines, IAPVirtualElement.VE_NAME_MACHINE_DESIGN, 0, "icons/system/machine_design.png");
-		children[1] = new APSubVirtualElement(machines, IAPVirtualElement.VE_NAME_MACHINE, 1, "icons/system/machine.png");
+		children[0] = new APSubVirtualElement(services.getChildren()[2], IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, 0, 3, "icons/services/deployment.png");
+		children[1] = new APSubVirtualElement(services.getChildren()[2], IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP, 1, 3, "icons/services/deployment.png");
+		services.getChildren()[2].setChildren(children);
+		
+		children = new IAPVirtualElement[2];
+		children[0] = new APSubVirtualElement(machines, IAPVirtualElement.VE_NAME_MACHINE_DESIGN, 0, 1, "icons/system/machine_design.png");
+		children[1] = new APSubVirtualElement(machines, IAPVirtualElement.VE_NAME_MACHINE, 1, 1, "icons/system/machine.png");
 		machines.setChildren(children);
 	}
 	
@@ -80,7 +84,6 @@ public class APProject implements IAPProject{
 	public IAPVirtualElement getMachines() {
 		return machines;
 	}
-	
 	/**
 	 * 현재 액션이 실행된 컨텍스트의 프로젝트 최상위 요소를 반환한다.
 	 * @return
