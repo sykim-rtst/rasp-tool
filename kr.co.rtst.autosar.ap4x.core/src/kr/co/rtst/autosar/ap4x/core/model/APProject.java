@@ -43,16 +43,17 @@ public class APProject implements IAPProject{
 		children[1] = new APSubVirtualElement(applications, IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM, 1, "icons/applications/platform.png");
 		applications.setChildren(children);
 		
-		children = new IAPVirtualElement[2];
+		children = new IAPVirtualElement[4];
 		children[0] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INTERFACE, 0, "icons/services/interface.png");
 		children[1] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT, 1, "icons/services/deployment.png");
+		children[2] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP, 2, "icons/services/deployment.png");
+		children[3] = new APSubVirtualElement(services, IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP, 3, "icons/services/deployment.png");
 		services.setChildren(children);
 		
 		children = new IAPVirtualElement[2];
 		children[0] = new APSubVirtualElement(machines, IAPVirtualElement.VE_NAME_MACHINE_DESIGN, 0, "icons/system/machine_design.png");
 		children[1] = new APSubVirtualElement(machines, IAPVirtualElement.VE_NAME_MACHINE, 1, "icons/system/machine.png");
 		machines.setChildren(children);
-		
 	}
 	
 	@Override
@@ -96,69 +97,4 @@ public class APProject implements IAPProject{
 		}
 		return null;
 	}
-	
-//	public GARPackage getApplicationGARPackage() {
-//		EObject eObject = getRootObject();
-//		if(eObject instanceof GAUTOSAR) {
-//			EList<GARPackage> packages = ((GAUTOSAR) eObject).gGetArPackages();
-//			for (GARPackage garPackage : packages) {
-//				if(getApplications().getPackageFullName().equals(garPackage.gGetShortName())) {
-//					return garPackage;
-//				}
-//			}
-//		}
-//		return null;
-//	}
-//	
-//	public GARPackage getServiceGARPackage() {
-//		EObject eObject = getRootObject();
-//		if(eObject instanceof GAUTOSAR) {
-//			EList<GARPackage> packages = ((GAUTOSAR) eObject).gGetArPackages();
-//			for (GARPackage garPackage : packages) {
-//				if(getServices().getPackageFullName().equals(garPackage.gGetShortName())) {
-//					return garPackage;
-//				}
-//			}
-//		}
-//		return null;
-//	}
-//	
-//	public GARPackage getMachineGARPackage() {
-//		EObject eObject = getRootObject();
-//		if(eObject instanceof GAUTOSAR) {
-//			EList<GARPackage> packages = ((GAUTOSAR) eObject).gGetArPackages();
-//			for (GARPackage garPackage : packages) {
-//				if(getMachines().getPackageFullName().equals(garPackage.gGetShortName())) {
-//					return garPackage;
-//				}
-//			}
-//		}
-//		return null;
-//	}
-//	
-//	public GARPackage getDataTypeGARPackage() {
-//		EObject eObject = getRootObject();
-//		if(eObject instanceof GAUTOSAR) {
-//			EList<GARPackage> packages = ((GAUTOSAR) eObject).gGetArPackages();
-//			for (GARPackage garPackage : packages) {
-//				if(getTypes().getPackageFullName().equals(garPackage.gGetShortName())) {
-//					return garPackage;
-//				}
-//			}
-//		}
-//		return null;
-//	}
-	
-//	public GARPackage getGARPackage(IAPVitualElement virtualElement) {
-//		EObject eObject = getRootObject();
-//		if(eObject instanceof GAUTOSAR) {
-//			EList<GARPackage> packages = ((GAUTOSAR) eObject).gGetArPackages();
-//			for (GARPackage garPackage : packages) {
-//				if(virtualElement.getPackageFullName().equals(garPackage.gGetShortName())) {
-//					return garPackage;
-//				}
-//			}
-//		}
-//		return null;
-//	}
 }

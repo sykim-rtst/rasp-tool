@@ -1,20 +1,6 @@
 package kr.co.rtst.autosar.ap4x.core.model.manager;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.util.EList;
-
-import autosar40.genericstructure.generaltemplateclasses.arpackage.ARPackage;
-import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCluster;
-import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetClusterConditional;
-import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetPhysicalChannel;
-import autosar40.system.fibex.fibex4ethernet.ethernettopology.NetworkEndpoint;
-import autosar40.system.fibex.fibexcore.coretopology.PhysicalChannel;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
-import gautosar.ggenericstructure.ginfrastructure.GARPackage;
-import gautosar.ggenericstructure.ginfrastructure.GAUTOSAR;
-import gautosar.ggenericstructure.ginfrastructure.GPackageableElement;
 import kr.co.rtst.autosar.ap4x.core.model.IAPSubVirtualElement;
 import kr.co.rtst.autosar.ap4x.core.model.IAPVirtualElement;
 
@@ -33,8 +19,11 @@ public class APModelManagerProvider {
 	private final SwComponentsModelManager swComponentsModelManager;
 	private final InterfacesModelManager interfacesModelManager;
 	private final InterfaceDeploymentModelManager interfaceDeploymentModelManager;
+	private final ProvidedServiceInstanceModelManager providedServiceInstanceModelManager;
+	private final RequiredServiceInstanceModelManager requiredServiceInstanceModelManager;
 	private final MachineDesignsModelManager machineDesignsModelManager;
 	private final MachineModelManager machinesModelManager;
+	
 	
 	
 	private APModelManagerProvider() {
@@ -43,6 +32,8 @@ public class APModelManagerProvider {
 		swComponentsModelManager = new SwComponentsModelManager();
 		machineDesignsModelManager = new MachineDesignsModelManager();
 		interfacesModelManager = new InterfacesModelManager();
+		providedServiceInstanceModelManager = new ProvidedServiceInstanceModelManager();
+		requiredServiceInstanceModelManager = new RequiredServiceInstanceModelManager();
 		interfaceDeploymentModelManager = new InterfaceDeploymentModelManager();
 		machinesModelManager = new MachineModelManager();
 	}
@@ -63,6 +54,10 @@ public class APModelManagerProvider {
 			return interfacesModelManager;
 		}else if(interfaceDeploymentModelManager.isNavigatableSubElement(element)) {
 			return interfaceDeploymentModelManager;
+		}else if(providedServiceInstanceModelManager.isNavigatableSubElement(element)) {
+			return providedServiceInstanceModelManager;
+		}else if(requiredServiceInstanceModelManager.isNavigatableSubElement(element)) {
+			return requiredServiceInstanceModelManager;
 		}else if(machineDesignsModelManager.isNavigatableSubElement(element)) {
 			return machineDesignsModelManager;
 		}else if(machinesModelManager.isNavigatableSubElement(element)) {
@@ -86,26 +81,30 @@ public class APModelManagerProvider {
 //	}
 	
 	public IAPModelManager lookupModelManager(IAPSubVirtualElement virtualElement) {
-	switch(virtualElement.getName()) {
-	case IAPVirtualElement.VE_NAME_TYPE_IMPL:
-		return implementationdataTypesModelManager;
-	case IAPVirtualElement.VE_NAME_TYPE_APP:
-		return applicationDataTypesModelManager;
-	case IAPVirtualElement.VE_NAME_APPLICATION_SWC:
-		return swComponentsModelManager;
-	case IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM:
+		switch(virtualElement.getName()) {
+		case IAPVirtualElement.VE_NAME_TYPE_IMPL:
+			return implementationdataTypesModelManager;
+		case IAPVirtualElement.VE_NAME_TYPE_APP:
+			return applicationDataTypesModelManager;
+		case IAPVirtualElement.VE_NAME_APPLICATION_SWC:
+			return swComponentsModelManager;
+		case IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM:
+			return null;
+		case IAPVirtualElement.VE_NAME_SERVICE_INTERFACE:
+			return interfacesModelManager;
+		case IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT:
+			return interfaceDeploymentModelManager;
+		case IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP:
+			return providedServiceInstanceModelManager;
+		case IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP:
+			return requiredServiceInstanceModelManager;
+		case IAPVirtualElement.VE_NAME_MACHINE_DESIGN:
+			return machineDesignsModelManager;
+		case IAPVirtualElement.VE_NAME_MACHINE:
+			return machinesModelManager;
+		}
 		return null;
-	case IAPVirtualElement.VE_NAME_SERVICE_INTERFACE:
-		return interfacesModelManager;
-	case IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT:
-		return interfaceDeploymentModelManager;
-	case IAPVirtualElement.VE_NAME_MACHINE_DESIGN:
-		return machineDesignsModelManager;
-	case IAPVirtualElement.VE_NAME_MACHINE:
-		return machinesModelManager;
 	}
-	return null;
-}
 	
 	public ImplementationDataTypesModelManager getImplementationDataTypesModelManager() {
 		return implementationdataTypesModelManager;
@@ -129,6 +128,14 @@ public class APModelManagerProvider {
 	
 	public InterfaceDeploymentModelManager getInterfaceDeploymentModelManager() {
 		return interfaceDeploymentModelManager;
+	}
+	
+	public ProvidedServiceInstanceModelManager getProvidedServiceInstanceModelManager() {
+		return providedServiceInstanceModelManager;
+	}
+	
+	public RequiredServiceInstanceModelManager getRequiredServiceInstanceModelManager() {
+		return requiredServiceInstanceModelManager;
 	}
 	
 	public MachineModelManager getMachinesModelManager() {

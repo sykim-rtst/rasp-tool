@@ -8,19 +8,22 @@ package kr.co.rtst.autosar.ap4x.core.model;
  */
 public interface IAPVirtualElement {
 	
-	String VE_NAME_TYPE						= "Types";
-	String VE_NAME_APPLICATION				= "Applications";
-	String VE_NAME_SERVICE					= "Services";
-	String VE_NAME_SYSTEM					= "System";
+	String VE_NAME_TYPE							= "Types";
+	String VE_NAME_APPLICATION					= "Applications";
+	String VE_NAME_SERVICE						= "Services";
+	String VE_NAME_SYSTEM						= "System";
 	
-	String VE_NAME_TYPE_IMPL				= "ImplementationDataTypes";
-	String VE_NAME_TYPE_APP					= "ApplicationDataTypes";
-	String VE_NAME_APPLICATION_SWC			= "SwComponents";
-	String VE_NAME_APPLICATION_PLATFORM		= "PlatformApplications";
-	String VE_NAME_SERVICE_INTERFACE		= "Interfaces";
-	String VE_NAME_SERVICE_DEPLOYMENT		= "Deployments";
-	String VE_NAME_MACHINE_DESIGN			= "MachineDesigns";
-	String VE_NAME_MACHINE					= "Machines";
+	String VE_NAME_TYPE_IMPL					= "ImplementationDataTypes";
+	String VE_NAME_TYPE_APP						= "ApplicationDataTypes";
+	String VE_NAME_APPLICATION_SWC				= "SwComponents";
+	String VE_NAME_APPLICATION_PLATFORM			= "PlatformApplications";
+	String VE_NAME_SERVICE_INTERFACE			= "Interfaces";
+	String VE_NAME_SERVICE_DEPLOYMENT			= "Deployments";
+	String VE_NAME_SERVICE_INSTANCE				= "Instances";
+	String VE_NAME_SERVICE_INS_PROVIDED_SOMEIP  = "ProvidedSomeipServiceInstance";
+	String VE_NAME_SERVICE_INS_REQUIRED_SOMEIP   = "RequiredSomeipServiceInstance";
+	String VE_NAME_MACHINE_DESIGN				= "MachineDesigns";
+	String VE_NAME_MACHINE						= "Machines";
 	
 	public int getIndex();
 	

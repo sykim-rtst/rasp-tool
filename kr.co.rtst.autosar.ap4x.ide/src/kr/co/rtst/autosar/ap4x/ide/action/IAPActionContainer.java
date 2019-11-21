@@ -7,6 +7,8 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import autosar40.adaptiveplatform.machinemanifest.Machine;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.RequiredSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
 //import autosar40.adaptiveplatform.deployment.machine.Machine;
 //import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
@@ -56,6 +58,22 @@ public interface IAPActionContainer {
 				try {
 					menuManager.add(new ElementModifyActionWrapper(apProject, "Machine", new NewProcessAction("Process", owner)));
 				} catch (NotSupportedAPActionException e) {
+					System.err.println(e.getMessage());
+				}
+			}else if(garObject instanceof ProvidedSomeipServiceInstance)
+			{
+				ProvidedSomeipServiceInstance owner = (ProvidedSomeipServiceInstance)garObject;
+				try {
+					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewProcessAction("Service Instance Config", owner)));
+				}catch(NotSupportedAPActionException e) {
+					System.err.println(e.getMessage());
+				}
+			}else if(garObject instanceof RequiredSomeipServiceInstance)
+			{
+				RequiredSomeipServiceInstance owner = (RequiredSomeipServiceInstance)garObject;
+				try {
+					menuManager.add(new ElementModifyActionWrapper(apProject, "RequiredSomeipServiceInstance", new NewProcessAction("Sd Config", owner)));
+				}catch(NotSupportedAPActionException e) {
 					System.err.println(e.getMessage());
 				}
 			}

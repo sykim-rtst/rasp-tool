@@ -3,6 +3,7 @@ package kr.co.rtst.autosar.ap4x.ide.views.provider.action;
 import autosar40.adaptiveplatform.applicationdesign.applicationstructure.ApplicationstructureFactory;
 import autosar40.adaptiveplatform.applicationdesign.portinterface.PortinterfaceFactory;
 import autosar40.adaptiveplatform.machinemanifest.MachinemanifestFactory;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ServiceinstancedeploymentFactory;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.ServiceinterfacedeploymentFactory;
 import autosar40.adaptiveplatform.systemdesign.SystemdesignFactory;
 import autosar40.commonstructure.implementationdatatypes.ImplementationdatatypesFactory;
@@ -39,6 +40,10 @@ public class CreateNewPackagableElementAction extends AbstractCreatePackagableEl
 			return SystemdesignFactory.eINSTANCE.createMachineDesign();
 		case IAPVirtualElement.VE_NAME_MACHINE:
 			return MachinemanifestFactory.eINSTANCE.createMachine();
+		case IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP:
+			return ServiceinstancedeploymentFactory.eINSTANCE.createProvidedSomeipServiceInstance();
+		case IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP:
+			return ServiceinstancedeploymentFactory.eINSTANCE.createRequiredSomeipServiceInstance();
 		}
 		return null;
 	}
@@ -61,6 +66,10 @@ public class CreateNewPackagableElementAction extends AbstractCreatePackagableEl
 			return "Machine Design";
 		case IAPVirtualElement.VE_NAME_MACHINE:
 			return "Machine";
+		case IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP:
+			return "Provided Someip Service Instance";
+		case IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP:
+			return "Required Someip Service Instance";	
 		}
 		return null;
 	}
