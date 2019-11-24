@@ -54,4 +54,5 @@ public interface EditorText {
 	// 오류 대화창
 	String DIALOG_ERROR_TITLE							= "Error";
 	String DIALOG_ERROR_MESSAGE_INTERFACE_NOT_FOUND		= "Interface not found!";
+	String DIALOG_ERROR_MESSAGE_INTERFACE_DEPLOYMENT_NOT_FOUND		= "Interface deployment not found!";
 }

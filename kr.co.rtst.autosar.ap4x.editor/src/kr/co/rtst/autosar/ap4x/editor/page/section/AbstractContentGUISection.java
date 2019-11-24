@@ -6,7 +6,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.sphinx.emf.editors.forms.sections.AbstractViewerFormSection;
 import org.eclipse.sphinx.emf.util.WorkspaceEditingDomainUtil;
@@ -19,12 +18,11 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
 import autosar40.genericstructure.generaltemplateclasses.arobject.ARObject;
-import autosar40.genericstructure.generaltemplateclasses.identifiable.Referrable;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.APProjectManager;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;
-import kr.co.rtst.autosar.ap4x.core.model.transaction.IAPTransactionalOperationDelegator;
 import kr.co.rtst.autosar.ap4x.core.model.transaction.IAPTransactionalOperation;
+import kr.co.rtst.autosar.ap4x.core.model.transaction.IAPTransactionalOperationDelegator;
 import kr.co.rtst.autosar.ap4x.editor.page.AbstractAPEditorPage;
 import kr.co.rtst.autosar.common.ui.util.APUILayoutFactory;
 

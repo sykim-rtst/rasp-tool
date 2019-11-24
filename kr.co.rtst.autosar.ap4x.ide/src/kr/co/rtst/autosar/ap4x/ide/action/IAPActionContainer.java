@@ -64,7 +64,7 @@ public interface IAPActionContainer {
 			{
 				ProvidedSomeipServiceInstance owner = (ProvidedSomeipServiceInstance)garObject;
 				try {
-					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewProcessAction("Service Instance Config", owner)));
+					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewServiceInstanceConfig("Service Instance Config", owner)));
 				}catch(NotSupportedAPActionException e) {
 					System.err.println(e.getMessage());
 				}

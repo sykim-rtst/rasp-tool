@@ -15,12 +15,14 @@ public class ARPackageBuilder {
 	
 	public static final String LV1_SYSTEM 						= "System";
 	public static final String LV1_APPLICATIONS		 			= "Applications";
+	public static final String LV1_SERVICE						= "Services";
 	
 	public static final String LV2_MODE_DECLARATION_GROUPS		= "ModeDeclarationGroups";
 	public static final String LV2_MODE_DEPENDENCIES			= "ModeDependencies";
 	public static final String LV2_PROCESSES					= "Processes";
 	public static final String LV2_STARTUP_CONFIGS				= "StartupConfigs";
 	public static final String LV2_EXECUTABLES					= "Executables";
+	public static final String LV2_SERVICE_INSTANCE_CONFIG		= "ServiceInstanceConfig";
 	
 	public static final String LV2_ETHERNETCLUSTER			 	= "EthernetCluster";
 	

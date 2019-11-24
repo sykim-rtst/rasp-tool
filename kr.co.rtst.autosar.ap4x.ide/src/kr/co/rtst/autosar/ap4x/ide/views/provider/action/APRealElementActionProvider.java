@@ -22,82 +22,14 @@ import kr.co.rtst.autosar.ap4x.ide.action.NotSupportedAPActionException;
 
 public class APRealElementActionProvider extends BasicModelEditActionProvider implements IAPActionContainer {
 
-//	public APRealElementActionProvider() {
-//		// TODO Auto-generated constructor stub
-//	}
-//	
-//	@Override
-//	public void setContext(ActionContext context) {
-//		super.setContext(context);
-//		System.out.println("APRealElementActionProvider::setContext---->>"+context.getInput());
-//		System.out.println("APRealElementActionProvider::setContext---->>"+context.getSelection());
-//		System.out.println("APRealElementActionProvider::setContext---->>"+((IStructuredSelection)context.getSelection()).getFirstElement());
-//		System.out.println("APRealElementActionProvider::setContext---->>"+context.getSelection().isEmpty());
-//	}
-//	
-//	@Override
-//	public void fillContextMenu(IMenuManager menu) {
-//		super.fillContextMenu(menu);
-//		
-//		IAction action2 = new Action("Adaptive Autosar...") {
-//			@Override
-//			public void run() {
-//				// TODO Auto-generated method stub
-//				super.run();
-//			}
-//		};
-//		
-//		menu.appendToGroup("additions", action2);
-//	}
-	
-	
-	
 	@Override
 	public void fillContextMenu(IMenuManager menuManager) {
-		// TODO Auto-generated method stub
-//		super.fillContextMenu(menuManager);
-		
-//		final IAPActionObserver actionObserver = new IAPActionObserver() {
-//			
-//			@Override
-//			public void preAction() {
-//				
-//			}
-//			
-//			@Override
-//			public void postAction() {
-//				AdaptiveAUTOSARNavigator.refresh();
-//			}
-//		};
 		
 		updateActions(getContext().getSelection());
 		System.out.println("createChildActions:"+createChildActions.size());
 		System.out.println("createChildSubmenuActions:"+createChildSubmenuActions.size());
 		System.out.println("createSiblingActions:"+createSiblingActions.size());
 		System.out.println("createSiblingSubmenuActions:"+createSiblingSubmenuActions.size());
-		
-//		for (Iterator iterator = createChildActions.iterator(); iterator.hasNext();) {
-//			IAction iAction = (IAction) iterator.next();
-//			System.out.println("createChildActions>>iActoin-TEXT:"+iAction.getText()+", ID:"+iAction.getId());
-//		}
-//		
-//		for(Iterator iterator = createChildSubmenuActions.keySet().iterator(); iterator.hasNext();) {
-//			System.out.println("KEY:"+iterator.next());
-//		}
-		
-		
-//		for (Iterator iterator = createChildSubmenuActions.values().iterator(); iterator.hasNext();) {
-//			Collection values = (Collection)iterator.next();
-//			for (Iterator iterator2 = values.iterator(); iterator2.hasNext();) {
-//				IAction iAction = (IAction) iterator2.next();
-//				System.out.println("---------------NAVIGATOR::createChildSubmenuActions>>iActoin-TEXT:"+iAction.getText()+", ID:"+iAction.getId());
-//				try {
-//					menuManager.add(new ElementModifyActionWrapper(iAction, actionObserver));
-//				} catch (NotSupportedAPActionException e) {
-//					System.err.println(e.getMessage());
-//				}
-//			}
-//		}
 		
 		Iterator<Map.Entry<String, Collection<IAction>>> entrise = createChildSubmenuActions.entrySet().iterator();
 		while(entrise.hasNext()) {
@@ -129,16 +61,6 @@ public class APRealElementActionProvider extends BasicModelEditActionProvider im
 		} catch (NotSupportedAPActionException e) {
 			System.err.println(e.getMessage());
 		}
-		
-//		for (Iterator iterator = createSiblingActions.iterator(); iterator.hasNext();) {
-//			IAction iAction = (IAction) iterator.next();
-//			System.out.println("createSiblingActions>>iActoin-TEXT:"+iAction.getText()+", ID:"+iAction.getId());
-//		}
-//		
-//		for (Iterator iterator = createSiblingSubmenuActions.values().iterator(); iterator.hasNext();) {
-//			IAction iAction = (IAction) iterator.next();
-//			System.out.println("createSiblingSubmenuActions>>iActoin-TEXT:"+iAction.getText()+", ID:"+iAction.getId());
-//		}
 	}
 	 
 	@Override
@@ -214,5 +136,4 @@ public class APRealElementActionProvider extends BasicModelEditActionProvider im
 			}
 		};
 	}
-
 }
