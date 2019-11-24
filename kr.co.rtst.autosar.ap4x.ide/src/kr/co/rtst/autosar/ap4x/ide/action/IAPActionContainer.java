@@ -64,7 +64,7 @@ public interface IAPActionContainer {
 			{
 				ProvidedSomeipServiceInstance owner = (ProvidedSomeipServiceInstance)garObject;
 				try {
-					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewServiceInstanceConfig("Service Instance Config", owner)));
+					menuManager.add(new ElementModifyActionWrapper(apProject, "ProvidedSomeipServiceInstance", new NewSdServerConfig("Service Instance Config", owner)));
 				}catch(NotSupportedAPActionException e) {
 					System.err.println(e.getMessage());
 				}
@@ -72,7 +72,7 @@ public interface IAPActionContainer {
 			{
 				RequiredSomeipServiceInstance owner = (RequiredSomeipServiceInstance)garObject;
 				try {
-					menuManager.add(new ElementModifyActionWrapper(apProject, "RequiredSomeipServiceInstance", new NewProcessAction("Sd Config", owner)));
+					menuManager.add(new ElementModifyActionWrapper(apProject, "RequiredSomeipServiceInstance", new NewSdClientConfig("Sd Config", owner)));
 				}catch(NotSupportedAPActionException e) {
 					System.err.println(e.getMessage());
 				}

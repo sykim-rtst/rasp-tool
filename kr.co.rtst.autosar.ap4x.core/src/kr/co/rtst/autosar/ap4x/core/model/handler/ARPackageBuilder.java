@@ -22,7 +22,8 @@ public class ARPackageBuilder {
 	public static final String LV2_PROCESSES					= "Processes";
 	public static final String LV2_STARTUP_CONFIGS				= "StartupConfigs";
 	public static final String LV2_EXECUTABLES					= "Executables";
-	public static final String LV2_SERVICE_INSTANCE_CONFIG		= "ServiceInstanceConfig";
+	public static final String LV2_SERVICE_INSTANCE_SD_SERVER_CONFIG		= "sdServerConfig";
+	public static final String LV2_SERVICE_INSTANCE_SD_CLIENT_CONFIG	= "sdClientConfig";
 	
 	public static final String LV2_ETHERNETCLUSTER			 	= "EthernetCluster";
 	
