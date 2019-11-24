@@ -50,8 +50,6 @@ public class APModelManagerProvider {
 			return applicationDataTypesModelManager;
 		}else if(swComponentsModelManager.isNavigatableSubElement(element)) {
 			return swComponentsModelManager;
-		}else if(interfacesModelManager.isNavigatableSubElement(element)) {
-			return interfacesModelManager;
 		}else if(interfaceDeploymentModelManager.isNavigatableSubElement(element)) {
 			return interfaceDeploymentModelManager;
 		}else if(providedServiceInstanceModelManager.isNavigatableSubElement(element)) {

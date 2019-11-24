@@ -1,5 +1,7 @@
 package kr.co.rtst.autosar.ap4x.ide.views.provider.model;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -32,41 +34,31 @@ public class AdaptiveAutosarModelContentProvider implements ITreeContentProvider
 		} else if(parentElement instanceof APTopVitualElement) {
 			return ((APTopVitualElement) parentElement).getChildren();
 		} else if(parentElement instanceof APSubVirtualElement) {
-			IAPModelManager modelManager = APModelManagerProvider.apINSTANCE.lookupModelManager((APSubVirtualElement) parentElement);
-			if(modelManager != null) {
-				IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAPProject.USER_DEFINED_ARXML_NAME);
-				return modelManager.getChildren(file, ((IAPVirtualElement) parentElement).getName()).toArray();
-			}
 			
-////			IAdaptiveAutosarProject apProject = ((IAPVitualElement) parentElement).getApProject();
-//			switch(((IAPVirtualElement) parentElement).getName()) {
-//				case IAPVirtualElement.VE_NAME_TYPE_IMPL: {
-//					IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAdaptiveAutosarProject.USER_DEFINED_ARXML_NAME);
-//					return APModelManagerProvider.INSTANCE.getDataTypeModelManager().getAllImplementationDataType(file).toArray();
-//				}
-//				case IAPVirtualElement.VE_NAME_TYPE_APP: {
-//					IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAdaptiveAutosarProject.USER_DEFINED_ARXML_NAME);
-//					return APModelManagerProvider.INSTANCE.getDataTypeModelManager().getAllApplicationDataType(file).toArray();	
-//				}
-//				case IAPVirtualElement.VE_NAME_APPLICATION_SWC: {
-//					IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAdaptiveAutosarProject.USER_DEFINED_ARXML_NAME);
-//					return APModelManagerProvider.INSTANCE.getApplicationModelManager().getAllAdaptiveApplicationSwComponentType(file).toArray();
-//				}
-//				case IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM: { 
-//					return null;
-//				}
-//				case IAPVirtualElement.VE_NAME_SERVICE_INTERFACE: { 
-//					IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAdaptiveAutosarProject.USER_DEFINED_ARXML_NAME);
-//					return APModelManagerProvider.INSTANCE.getServiceModelManager().getAllServiceInterface(file).toArray();
-//				}
-//				case IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT: { 
-//					return null;
-//				}
-//				case IAPVirtualElement.VE_NAME_MACHINE_DESIGN: { 
-//					IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAdaptiveAutosarProject.USER_DEFINED_ARXML_NAME);
-//					return APModelManagerProvider.INSTANCE.getMachineModelManager().getAllMachine(file).toArray();
-//				}
-//			}
+			switch(((IAPVirtualElement) parentElement).getName()) {
+				case IAPVirtualElement.VE_NAME_SERVICE_INSTANCE:
+					{
+						IAPModelManager modelManager = APModelManagerProvider.apINSTANCE.getProvidedServiceInstanceModelManager();
+						IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAPProject.USER_DEFINED_ARXML_NAME);
+						List<GARObject> resultList = modelManager.getChildren(file, IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP);
+						
+						modelManager = APModelManagerProvider.apINSTANCE.getRequiredServiceInstanceModelManager();
+						resultList.addAll(modelManager.getChildren(file, IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP));
+						
+						GARObject[] result = new GARObject[resultList.size()];
+						resultList.toArray(result);
+						return result;
+					}
+				default:
+					{
+						IAPModelManager modelManager = APModelManagerProvider.apINSTANCE.lookupModelManager((APSubVirtualElement) parentElement);
+						if(modelManager != null) {
+							IFile file = ((IAPVirtualElement) parentElement).getApProject().getProject().getFile(IAPProject.USER_DEFINED_ARXML_NAME);
+							return modelManager.getChildren(file, ((IAPVirtualElement) parentElement).getName()).toArray();
+						}
+					}
+					break;
+			}
 		} else if(parentElement instanceof GARObject) {
 			IAPModelManager modelManager = APModelManagerProvider.apINSTANCE.lookupModelManager((GARObject)parentElement);
 //			System.out.println("--------------IAPModelManager--------------getChildren::parentElement:"+parentElement+", modelManager:"+modelManager);
@@ -74,13 +66,7 @@ public class AdaptiveAutosarModelContentProvider implements ITreeContentProvider
 //				System.out.println("--------------=============--------------getChildren::parentElement:"+parentElement+", modelManager:"+modelManager);
 				return modelManager.getChildren((GARObject)parentElement).toArray();
 			}
-		}
-		
-		
-//		else if(parentElement instanceof GARPackage) {
-//			System.out.println("TESTSETEST-------------------");
-//			return ((GARPackage)parentElement).gGetElements().toArray();
-//		}  
+		} 
 		
 		return null;
 	}

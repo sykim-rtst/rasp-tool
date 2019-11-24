@@ -39,7 +39,7 @@ public class SomeipSdClientServiceInstanceConfigSection extends ShortNameContent
 	protected void createSectionClientContentDetail(IManagedForm managedForm, SectionPart sectionPart, Composite parent) {
 		super.createSectionClientContentDetail(managedForm, sectionPart, parent);
 		
-		sectionPart.getSection().setText("Sd Client Servie Instance Config");
+		sectionPart.getSection().setText("Sd Client Service Instance Config");
 		sectionPart.getSection().setDescription("Someip SD Client Service Instance Config");
 		
 		textServiceFindTimeToLive = APSectionUIFactory.createLabelText(parent, ToolTipFactory.get(""), "Service offer time to live: ", AbstractContentGUISection.CLIENT_CONTENT_COLUMN-1, true);

@@ -9,9 +9,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import autosar40.adaptiveplatform.machinemanifest.Machine;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.ProvidedSomeipServiceInstance;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.RequiredSomeipServiceInstance;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdClientServiceInstanceConfig;
+import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinstancedeployment.SomeipSdServerServiceInstanceConfig;
 import autosar40.adaptiveplatform.serviceinstancemanifest.serviceinterfacedeployment.SomeipServiceDiscovery;
-//import autosar40.adaptiveplatform.deployment.machine.Machine;
-//import autosar40.adaptiveplatform.deployment.serviceinterfacedeployment.SomeipServiceDiscovery;
 import autosar40.system.fibex.fibex4ethernet.ethernettopology.EthernetCommunicationConnector;
 import gautosar.ggenericstructure.ginfrastructure.GARObject;
 import kr.co.rtst.autosar.ap4x.core.model.IAPProject;
@@ -78,6 +78,34 @@ public interface IAPActionContainer {
 				}
 			}
 		}
+		
+	}
+	
+	default boolean addAPDeleteAction(IAPProject apProject, IContributionManager menuManager, GARObject parent, IStructuredSelection selection)
+	{
+		if(selection != null && selection.size() == 1 && selection.getFirstElement() instanceof GARObject) {
+			GARObject garObject = (GARObject)selection.getFirstElement();
+			
+			if(garObject instanceof SomeipSdClientServiceInstanceConfig) {
+				RequiredSomeipServiceInstance owner = (RequiredSomeipServiceInstance)parent;
+				
+				try {
+					menuManager.add(new ElementModifyActionWrapper(apProject, "Delete", new DeleteSdClientConfig("Delete", owner)));
+				} catch (NotSupportedAPActionException e) {
+					System.err.println(e.getMessage());
+				}
+				return true;
+			}else if(garObject instanceof SomeipSdServerServiceInstanceConfig) {
+				ProvidedSomeipServiceInstance owner = (ProvidedSomeipServiceInstance)parent;
+				
+				try {
+					menuManager.add(new ElementModifyActionWrapper(apProject, "Delete", new DeleteSdServerConfig("Delete", owner)));
+				}catch (NotSupportedAPActionException e) {
+					System.err.println(e.getMessage());
+				}
+			}
+		}
+		return false;
 		
 	}
 	

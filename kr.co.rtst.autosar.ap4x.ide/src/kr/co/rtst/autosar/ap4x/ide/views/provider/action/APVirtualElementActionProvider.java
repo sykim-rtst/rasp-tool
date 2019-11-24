@@ -5,6 +5,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.navigator.CommonActionProvider;
 
+import kr.co.rtst.autosar.ap4x.core.model.APProjectManager;
 import kr.co.rtst.autosar.ap4x.core.model.IAPVirtualElement;
 
 public class APVirtualElementActionProvider extends CommonActionProvider {
@@ -44,8 +45,8 @@ public class APVirtualElementActionProvider extends CommonActionProvider {
 		case IAPVirtualElement.VE_NAME_SERVICE:
 			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[0], "Add Service Interface..."));
 			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[1], "Add Service Interface Deployment..."));
-			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[2], "Add Provided Service Instance..."));
-			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[3], "Add Required Service Instance..."));
+			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[2].getChildren()[0], "Add Provided Service Instance..."));
+			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[2].getChildren()[1], "Add Required Service Instance..."));
 			break;
 		case IAPVirtualElement.VE_NAME_SYSTEM:
 			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[0], "Add Machine Design..."));
@@ -69,11 +70,9 @@ public class APVirtualElementActionProvider extends CommonActionProvider {
 		case IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT:
 			menu.add(new CreateNewPackagableElementAction(selectedElement, "Add Service Interface Deployment..."));
 			break;
-		case IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP:
-			menu.add(new CreateNewPackagableElementAction(selectedElement, "Add Provided Service Instance..."));
-			break;
-		case IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP:
-			menu.add(new CreateNewPackagableElementAction(selectedElement, "Add Required Service Instance..."));
+		case IAPVirtualElement.VE_NAME_SERVICE_INSTANCE:
+			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[0], "Add Provided Service Instance..."));
+			menu.add(new CreateNewPackagableElementAction(selectedElement.getChildren()[1], "Add Required Service Instance..."));
 			break;
 		case IAPVirtualElement.VE_NAME_MACHINE_DESIGN:
 			menu.add(new CreateNewPackagableElementAction(selectedElement, "Add Machine Design..."));

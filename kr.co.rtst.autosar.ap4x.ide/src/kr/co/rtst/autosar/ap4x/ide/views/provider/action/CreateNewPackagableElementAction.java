@@ -44,6 +44,7 @@ public class CreateNewPackagableElementAction extends AbstractCreatePackagableEl
 			return ServiceinstancedeploymentFactory.eINSTANCE.createProvidedSomeipServiceInstance();
 		case IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP:
 			return ServiceinstancedeploymentFactory.eINSTANCE.createRequiredSomeipServiceInstance();
+			
 		}
 		return null;
 	}
@@ -57,7 +58,6 @@ public class CreateNewPackagableElementAction extends AbstractCreatePackagableEl
 			return "Application Data Type";
 		case IAPVirtualElement.VE_NAME_APPLICATION_SWC:
 			return "Adaptive Applciation SW Component Type";
-//		case IAPVirtualElement.VE_NAME_APPLICATION_PLATFORM:
 		case IAPVirtualElement.VE_NAME_SERVICE_INTERFACE:
 			return "Service Interface";
 		case IAPVirtualElement.VE_NAME_SERVICE_DEPLOYMENT:
@@ -66,10 +66,8 @@ public class CreateNewPackagableElementAction extends AbstractCreatePackagableEl
 			return "Machine Design";
 		case IAPVirtualElement.VE_NAME_MACHINE:
 			return "Machine";
-		case IAPVirtualElement.VE_NAME_SERVICE_INS_PROVIDED_SOMEIP:
-			return "Provided Someip Service Instance";
-		case IAPVirtualElement.VE_NAME_SERVICE_INS_REQUIRED_SOMEIP:
-			return "Required Someip Service Instance";	
+		case IAPVirtualElement.VE_NAME_SERVICE_INSTANCE:
+			return "Service Instance";
 		}
 		return null;
 	}
