@@ -22,3 +22,6 @@ Autosar Standard를 구현한 Artop 플러그인과 Autosar 모델의 EMF를 제
 - This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT) 
   (No.2018-0-00487, Reliable and adaptive automotive SW platform for intelligent vehicle services)
 
+# 라이선스
+- Eclipse Public License - v 2.0
+- https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html
